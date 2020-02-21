@@ -1,8 +1,37 @@
 * {
     box-sizing: border-box;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .container {
-    
+    margin-top: 10vh;
+    width: 50vw;
+}
+
+.container h2,
+.container h3,
+.container h4 {
+    text-align: center;
+}
+
+.container .btn {
+    width: 100px;
+}
+
+.card {
+    margin-top: 20px;
+    padding: 30px;
+}
+
+.card form {
+    margin: 20px 0;
+}
+
+.btnRow {
+    margin-top: 30px;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
 }

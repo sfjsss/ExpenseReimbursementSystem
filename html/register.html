@@ -22,7 +22,7 @@
     <div class="container">
         <h2>Welcome to Expense Reimbursement System (ERS)</h2>
         <div class="card">
-            <h3>LOGIN</h3>
+            <h3>REGISTER</h3>
             <form>
                 <div class="form-group row">
                     <label for="email" class="col-3 col-form-label">email:</label>
@@ -32,9 +32,23 @@
                 </div>
 
                 <div class="form-group row">
+                    <label for="managerId" class="col-3 col-form-label">manager id:</label>
+                    <div class="col-9">
+                        <input type="number" name="managerId" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <label for="password" class="col-3 col-form-label">password:</label>
                     <div class="col-9">
                         <input id="password" name="password" type="password" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="confirmPassword" class="col-3 col-form-label">confirm PW:</label>
+                    <div class="col-9">
+                        <input id="confirmPassword" name="confirmPassword" type="password" class="form-control">
                     </div>
                 </div>
 
@@ -51,7 +65,7 @@
             </div>
             <div class="form-group row btnRow">
                 <div class="col-12 btnContainer">
-                    <a href="./register.html" class="btn btn-outline-primary">REGISTER</a>
+                    <a href="./login.html" class="btn btn-outline-primary">LOGIN</a>
                 </div>
             </div>
         </div>
