@@ -20,30 +20,65 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        
         <a href="./home.html" class="navbar-brand">Expense Reimbursement System</a>
 
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a href="./home.html" class="nav-link">Home</a>
+                    <a href="./home.html" class="nav-link">Pending</a>
                 </li>
                 <li class="nav-item">
-                    <a href="./home.html" class="nav-link">test</a>
+                    <a href="./home.html" class="nav-link">Resolved</a>
                 </li>
             </ul>
 
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mr-3">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">
                         Welcome Alan
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu">
                         <a href="#" class="dropdown-item">profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">logout</a>
                     </div>
                 </li>
             </ul>
         </div>
         
     </nav>
+        <div class="wrapper mx-auto">
+            <form class="form-inline d-flex justify-content-between">
+                <div class="form-group mr-3">
+                    <label for="title" class="mr-3">Title:</label>
+                    <input type="text" id="title" name="title" class="form-control">
+                </div>
+                <div class="form-group mr-3">
+                    <label for="date" class="mr-3">Date:</label>
+                    <input type="date" id="date" name="date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="description" class="mr-3">Description:</label>
+                    <input type="text" id="description" name="description" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                </div>
+                
+    
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+        
+
+        
+
 </body>
 </html>
