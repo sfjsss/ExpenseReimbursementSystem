@@ -3,6 +3,6 @@
     /* border: 1px solid red; */
 }
 
-.wrapper {
-    padding: 30px;
+form .btn {
+    width: 100px;
 }
