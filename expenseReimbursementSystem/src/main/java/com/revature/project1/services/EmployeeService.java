@@ -8,7 +8,8 @@ public class EmployeeService {
 	
 	private EmployeeDao ed = new EmployeeDaoImpl();
 
-	public int createManager(Employee e) {
+	public int createEmployee(Employee e) {
 		return ed.createEmployee(e);
 	}
+	
 }
