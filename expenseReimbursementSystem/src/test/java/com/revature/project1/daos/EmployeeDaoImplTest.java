@@ -53,6 +53,29 @@ public class EmployeeDaoImplTest {
 		assertEquals(e, result);
 	}
 	
+	@Test
+	public void testUpdateEmployee() {
+		Employee e = new Employee();
+		e.setEmployee_id(1);
+		e.setEmail("allen@l.com");
+		e.setEmployee_type("employee");
+		e.setFirst_name("allen");
+		e.setLast_name("li");
+		e.setPass("password");
+		
+		Employee result = new Employee();
+		result.setEmployee_id(1);
+		result.setEmail("allen@l.com");
+		result.setEmployee_type("employee");
+		result.setFirst_name("allen");
+		result.setLast_name("li");
+		result.setPass("password");
+		
+		ed.updateEmployee(result);
+		Employee expected = ed.isEmailExist("allen@l.com");
+		assertEquals(e, expected);
+	}
+	
 	@AfterClass
 	public static void tearDown() throws SQLException, FileNotFoundException {
 		try (Connection c = ConnectionUtil.getConnection()) {
