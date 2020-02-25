@@ -71,4 +71,29 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		return reimbursements;
 	}
 
+	@Override
+	public int createNewReimbursement(Reimbursement r) {
+		String sql = "insert into reimbursement (reimbursement_type, reimbursement_time, reimbursement_description, receipt_path, reimbursement_status, requester_id, processor_id) values (?, ?, ?, ?, ?, ?, ?)";
+		int affectedRows = 0;
+		
+		try (Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql)) {
+			
+			ps.setString(1, r.getReimbursement_type());
+			ps.setTimestamp(2, r.getReimbursement_time());
+			ps.setString(3, r.getReimbursement_description());
+			ps.setString(4, r.getReceipt_path());
+			ps.setString(5, r.getReimbursement_status());
+			ps.setInt(6, r.getRequester().getEmployee_id());
+			ps.setInt(7, r.getProcessor().getEmployee_id());
+			
+			affectedRows = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return affectedRows;
+	}
+
 }
