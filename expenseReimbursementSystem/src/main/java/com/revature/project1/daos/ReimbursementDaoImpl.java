@@ -34,25 +34,26 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				rb.setReimbursement_type(rs.getString(2));
 				rb.setReimbursement_time(rs.getTimestamp(3));
 				rb.setReimbursement_description(rs.getString(4));
-				rb.setReceipt_path(rs.getString(5));
-				rb.setReimbursement_status(rs.getString(6));
+				rb.setReceipt_name(rs.getString(5));
+				rb.setReceipt_path(rs.getString(6));
+				rb.setReimbursement_status(rs.getString(7));
 				
 				Employee requester = new Employee();
-				requester.setEmployee_id(rs.getInt(9));
-				requester.setEmail(rs.getString(10));
-				requester.setEmployee_type(rs.getString(11));
-				requester.setFirst_name(rs.getString(12));
-				requester.setLast_name(rs.getString(13));
-				requester.setPass(rs.getString(14));
+				requester.setEmployee_id(rs.getInt(10));
+				requester.setEmail(rs.getString(11));
+				requester.setEmployee_type(rs.getString(12));
+				requester.setFirst_name(rs.getString(13));
+				requester.setLast_name(rs.getString(14));
+				requester.setPass(rs.getString(15));
 				rb.setRequester(requester);
 				
 				Employee processor = new Employee();
-				processor.setEmployee_id(rs.getInt(15));
-				processor.setEmail(rs.getString(16));
-				processor.setEmployee_type(rs.getString(17));
-				processor.setFirst_name(rs.getString(18));
-				processor.setLast_name(rs.getString(19));
-				processor.setPass(rs.getString(20));
+				processor.setEmployee_id(rs.getInt(16));
+				processor.setEmail(rs.getString(17));
+				processor.setEmployee_type(rs.getString(18));
+				processor.setFirst_name(rs.getString(19));
+				processor.setLast_name(rs.getString(20));
+				processor.setPass(rs.getString(21));
 				rb.setProcessor(processor);
 				
 				reimbursements.add(rb);
@@ -75,7 +76,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 
 	@Override
 	public int createNewReimbursement(Reimbursement r) {
-		String sql = "insert into reimbursement (reimbursement_type, reimbursement_time, reimbursement_description, receipt_path, reimbursement_status, requester_id, processor_id) values (?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into reimbursement (reimbursement_type, reimbursement_time, reimbursement_description, receipt_name, receipt_path, reimbursement_status, requester_id, processor_id) values (?, ?, ?, ?, ?, ?, ?, ?)";
 		int affectedRows = 0;
 		
 		try (Connection c = ConnectionUtil.getConnection();
@@ -84,10 +85,11 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			ps.setString(1, r.getReimbursement_type());
 			ps.setTimestamp(2, r.getReimbursement_time());
 			ps.setString(3, r.getReimbursement_description());
-			ps.setString(4, r.getReceipt_path());
-			ps.setString(5, r.getReimbursement_status());
-			ps.setInt(6, r.getRequester().getEmployee_id());
-			ps.setInt(7, r.getProcessor().getEmployee_id());
+			ps.setString(4, r.getReceipt_name());
+			ps.setString(5, r.getReceipt_path());
+			ps.setString(6, r.getReimbursement_status());
+			ps.setInt(7, r.getRequester().getEmployee_id());
+			ps.setInt(8, r.getProcessor().getEmployee_id());
 			
 			affectedRows = ps.executeUpdate();
 			

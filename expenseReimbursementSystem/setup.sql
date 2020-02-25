@@ -12,6 +12,7 @@ create table reimbursement (
 	reimbursement_type varchar,
 	reimbursement_time timestamp,
 	reimbursement_description varchar,
+	receipt_name varchar,
 	receipt_path varchar,
 	reimbursement_status varchar,
 	requester_id integer references employee(employee_id),

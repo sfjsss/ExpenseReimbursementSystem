@@ -13,6 +13,7 @@ create table reimbursement (
 	reimbursement_type varchar,
 	reimbursement_time timestamp,
 	reimbursement_description varchar,
+	receipt_name varchar,
 	receipt_path varchar,
 	reimbursement_status varchar,
 	requester_id integer references employee(employee_id),
@@ -27,6 +28,7 @@ select * from reimbursement inner join employee as requester on reimbursement.re
 
 --reset testing
 truncate table employee, reimbursement;
+drop table reimbursement;
 
 
 

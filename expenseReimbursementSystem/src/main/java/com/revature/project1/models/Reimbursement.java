@@ -11,6 +11,7 @@ public class Reimbursement implements Serializable {
 	private String reimbursement_type;
 	private Timestamp reimbursement_time;
 	private String reimbursement_description;
+	private String receipt_name;
 	private String receipt_path;
 	private String reimbursement_status;
 	private Employee requester;
@@ -52,6 +53,14 @@ public class Reimbursement implements Serializable {
 		this.reimbursement_description = reimbursement_description;
 	}
 
+	public String getReceipt_name() {
+		return receipt_name;
+	}
+
+	public void setReceipt_name(String receipt_name) {
+		this.receipt_name = receipt_name;
+	}
+
 	public String getReceipt_path() {
 		return receipt_path;
 	}
@@ -72,8 +81,8 @@ public class Reimbursement implements Serializable {
 		return requester;
 	}
 
-	public void setRequester(Employee requestor) {
-		this.requester = requestor;
+	public void setRequester(Employee requester) {
+		this.requester = requester;
 	}
 
 	public Employee getProcessor() {
@@ -89,6 +98,7 @@ public class Reimbursement implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((processor == null) ? 0 : processor.hashCode());
+		result = prime * result + ((receipt_name == null) ? 0 : receipt_name.hashCode());
 		result = prime * result + ((receipt_path == null) ? 0 : receipt_path.hashCode());
 		result = prime * result + ((reimbursement_description == null) ? 0 : reimbursement_description.hashCode());
 		result = prime * result + reimbursement_id;
@@ -112,6 +122,11 @@ public class Reimbursement implements Serializable {
 			if (other.processor != null)
 				return false;
 		} else if (!processor.equals(other.processor))
+			return false;
+		if (receipt_name == null) {
+			if (other.receipt_name != null)
+				return false;
+		} else if (!receipt_name.equals(other.receipt_name))
 			return false;
 		if (receipt_path == null) {
 			if (other.receipt_path != null)
@@ -152,8 +167,9 @@ public class Reimbursement implements Serializable {
 	public String toString() {
 		return "Reimbursement [reimbursement_id=" + reimbursement_id + ", reimbursement_type=" + reimbursement_type
 				+ ", reimbursement_time=" + reimbursement_time + ", reimbursement_description="
-				+ reimbursement_description + ", receipt_path=" + receipt_path + ", reimbursement_status="
-				+ reimbursement_status + ", requester=" + requester + ", processor=" + processor + "]";
+				+ reimbursement_description + ", receipt_name=" + receipt_name + ", receipt_path=" + receipt_path
+				+ ", reimbursement_status=" + reimbursement_status + ", requester=" + requester + ", processor="
+				+ processor + "]";
 	}
 	
 }
