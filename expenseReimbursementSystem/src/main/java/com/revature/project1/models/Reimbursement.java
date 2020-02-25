@@ -13,7 +13,7 @@ public class Reimbursement implements Serializable {
 	private String reimbursement_description;
 	private String receipt_path;
 	private String reimbursement_status;
-	private Employee requestor;
+	private Employee requester;
 	private Employee processor;
 	
 	public Reimbursement() {
@@ -68,12 +68,12 @@ public class Reimbursement implements Serializable {
 		this.reimbursement_status = reimbursement_status;
 	}
 
-	public Employee getRequestor() {
-		return requestor;
+	public Employee getRequester() {
+		return requester;
 	}
 
-	public void setRequestor(Employee requestor) {
-		this.requestor = requestor;
+	public void setRequester(Employee requestor) {
+		this.requester = requestor;
 	}
 
 	public Employee getProcessor() {
@@ -95,7 +95,7 @@ public class Reimbursement implements Serializable {
 		result = prime * result + ((reimbursement_status == null) ? 0 : reimbursement_status.hashCode());
 		result = prime * result + ((reimbursement_time == null) ? 0 : reimbursement_time.hashCode());
 		result = prime * result + ((reimbursement_type == null) ? 0 : reimbursement_type.hashCode());
-		result = prime * result + ((requestor == null) ? 0 : requestor.hashCode());
+		result = prime * result + ((requester == null) ? 0 : requester.hashCode());
 		return result;
 	}
 
@@ -140,10 +140,10 @@ public class Reimbursement implements Serializable {
 				return false;
 		} else if (!reimbursement_type.equals(other.reimbursement_type))
 			return false;
-		if (requestor == null) {
-			if (other.requestor != null)
+		if (requester == null) {
+			if (other.requester != null)
 				return false;
-		} else if (!requestor.equals(other.requestor))
+		} else if (!requester.equals(other.requester))
 			return false;
 		return true;
 	}
@@ -153,7 +153,7 @@ public class Reimbursement implements Serializable {
 		return "Reimbursement [reimbursement_id=" + reimbursement_id + ", reimbursement_type=" + reimbursement_type
 				+ ", reimbursement_time=" + reimbursement_time + ", reimbursement_description="
 				+ reimbursement_description + ", receipt_path=" + receipt_path + ", reimbursement_status="
-				+ reimbursement_status + ", requestor=" + requestor + ", processor=" + processor + "]";
+				+ reimbursement_status + ", requester=" + requester + ", processor=" + processor + "]";
 	}
 	
 }
