@@ -6,6 +6,6 @@ import com.revature.project1.models.Reimbursement;
 
 public interface ReimbursementDao {
 
-	public List<Reimbursement> getAllReimbursementsByEmployeeId(int employeeId);
+	public List<Reimbursement> getAllReimbursementsByEmployeeId(int employeeId, String status);
 	public int createNewReimbursement(Reimbursement r);
 }

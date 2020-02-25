@@ -14,9 +14,9 @@ import com.revature.project1.util.ConnectionUtil;
 public class ReimbursementDaoImpl implements ReimbursementDao {
 
 	@Override
-	public List<Reimbursement> getAllReimbursementsByEmployeeId(int employeeId) {
+	public List<Reimbursement> getAllReimbursementsByEmployeeId(int employeeId, String status) {
 		
-		String sql = "select * from reimbursement inner join employee as requester on reimbursement.requester_id = requester.employee_id inner join employee as processor on reimbursement.processor_id = processor.employee_id where requester.employee_id = ?";
+		String sql = "select * from reimbursement inner join employee as requester on reimbursement.requester_id = requester.employee_id inner join employee as processor on reimbursement.processor_id = processor.employee_id where requester.employee_id = ? and reimbursement_status = ?";
 		ResultSet rs = null;
 		List<Reimbursement> reimbursements = new ArrayList<>();
 		
@@ -24,6 +24,8 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				PreparedStatement ps = c.prepareStatement(sql)) {
 			
 			ps.setInt(1, employeeId);
+			ps.setString(2, status);
+			
 			rs = ps.executeQuery();
 			
 			while (rs.next()) {
