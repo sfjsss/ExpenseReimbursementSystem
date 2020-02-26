@@ -21,7 +21,7 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light px-4">
         
-        <a href="./employeePendingReq.html" class="navbar-brand">Expense Reimbursement System</a>
+        <a href="./employeePendingReq.html" class="navbar-brand">ERS</a>
 
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
@@ -52,9 +52,7 @@
         
     </nav>
     <div class="wrapper mx-auto p-4">
-        <!-- <h5>New Reimbursement Request</h5> -->
-        <!-- <br> -->
-        <form class="form-inline d-flex justify-content-between">
+        <form class="form-inline">
             <div class="form-group mr-3">
                 <label for="type" class="mr-3">Type:</label>
                 <select class="form-control" name="type" id="type">
@@ -66,12 +64,12 @@
                 <label for="date" class="mr-3">Date:</label>
                 <input type="date" id="date" name="date" class="form-control">
             </div>
-            <div class="form-group">
+            <div class="form-group mr-3">
                 <label for="description" class="mr-3">Description:</label>
                 <input type="text" id="description" name="description" class="form-control">
             </div>
             
-            <div class="form-group">
+            <div class="form-group mr-3">
                 <div class="custom-file">
                     <input type="file" name="file" class="custom-file-input" id="file">
                     <label class="custom-file-label justify-content-start" for="file">Upload file</label>
@@ -102,6 +100,7 @@
 
     <!-- custom js -->
     <script src="../node_modules/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+    <script src="../js/fileUploadPlugin.js"></script>
     <script src="../js/main.js"></script>
 </body>
 </html>

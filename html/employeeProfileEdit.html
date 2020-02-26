@@ -20,7 +20,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <a href="./employeePendingReq.html" class="navbar-brand">Expense Reimbursement System</a>
+        <a href="./employeePendingReq.html" class="navbar-brand">ERS</a>
 
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
@@ -63,13 +63,6 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="managerId" class="col-3 col-form-label">manager id:</label>
-                    <div class="col-9">
-                        <input type="number" name="managerId" class="form-control">
-                    </div>
-                </div>
-
-                <div class="form-group row">
                     <label for="password" class="col-3 col-form-label">password:</label>
                     <div class="col-9">
                         <input id="password" name="password" type="password" class="form-control">
@@ -101,12 +94,29 @@
             </div>
         </div>
     </div>
-        
-        
-        
 
+    <!-- confirm profile update modal -->
+    <div class="modal fade" id="confirmProfileUpdate" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Message</h5>
+            <button type="button" class="close" data-dismiss="modal">
+                <span>&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <p>Your profile has been updated.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+            </div>
+        </div>
+        </div>
+    </div>
+        
     <!-- custom js -->
-    <script src="../node_modules/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+    <script src="../js/profile.js"></script>
     <script src="../js/main.js"></script>
 </body>
 </html>
