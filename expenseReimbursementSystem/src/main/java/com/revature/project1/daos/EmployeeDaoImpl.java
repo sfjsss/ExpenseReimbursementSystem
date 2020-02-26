@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.revature.project1.models.Employee;
 import com.revature.project1.util.ConnectionUtil;
@@ -90,6 +93,34 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 		
 		return affectedRows;
+	}
+
+	@Override
+	public List<Employee> getAllEmployees() {
+
+		String sql = "select * from employee where employee_type = 'associate'";
+		List<Employee> employees = new ArrayList<>();
+		
+		try (Connection c = ConnectionUtil.getConnection();
+				Statement s = c.createStatement();
+				ResultSet rs = s.executeQuery(sql)) {
+			
+			while (rs.next()) {
+				Employee employee = new Employee();
+				employee.setEmployee_id(rs.getInt(1));
+				employee.setEmail(rs.getString(2));
+				employee.setEmployee_type(rs.getString(3));
+				employee.setFirst_name(rs.getString(4));
+				employee.setLast_name(rs.getString(5));
+				employee.setPass(rs.getString(6));
+				employees.add(employee);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return employees;
 	}
 	
 	
