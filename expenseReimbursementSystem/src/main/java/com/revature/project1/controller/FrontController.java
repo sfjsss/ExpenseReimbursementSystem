@@ -1,13 +1,17 @@
 package com.revature.project1.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class FrontController extends HttpServlet {
+import org.apache.catalina.servlets.DefaultServlet;
+
+public class FrontController extends DefaultServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private RequestHelper requestHelper = new RequestHelper();
        
     public FrontController() {
         super();
@@ -21,7 +25,7 @@ public class FrontController extends HttpServlet {
 		if (path.startsWith("/static")) {
 			super.doGet(request, response);
 		} else {
-			
+			requestHelper.processGet(request, response);
 		}
 	}
 	
