@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- custom css -->
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="static/Styles/home.css">
 
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -22,12 +22,19 @@
     <div class="container mt-5">
         <h2 class="text-center">Welcome to Expense Reimbursement System (ERS)</h2>
         <div class="card p-5 mt-3">
-            <h3 class="text-center">PASSWORD RESET</h3>
+            <h3 class="text-center">LOGIN</h3>
             <form class="my-3">
                 <div class="form-group row">
                     <label for="email" class="col-3 col-form-label">email:</label>
                     <div class="col-9">
                         <input id="email" name="email" type="email" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="password" class="col-3 col-form-label">password:</label>
+                    <div class="col-9">
+                        <input id="password" name="password" type="password" class="form-control">
                     </div>
                 </div>
 
@@ -37,6 +44,7 @@
                     </div>
                 </div>
             </form>
+
             <div class="row">
                 <div class="col-12">
                     <h4 class="text-center">OR</h4>
@@ -44,7 +52,7 @@
             </div>
             <div class="form-group row mt-4">
                 <div class="col-12 d-flex justify-content-center">
-                    <a href="./login.html" class="btn btn-outline-primary">LOGIN</a>
+                    <a href="./passwordReset.html" class="btn btn-outline-primary">RESET PASSWORD</a>
                 </div>
             </div>
         </div>
