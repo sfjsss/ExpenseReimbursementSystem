@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERS</title>
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="../css/home.css">
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light px-4">
+        
+        <a href="./managerPendingReq.html" class="navbar-brand">ERS</a>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a href="./managerPendingReq.html" class="nav-link">Pending</a>
+                </li>
+                <li class="nav-item">
+                    <a href="./managerResolvedReq.html" class="nav-link">Resolved</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://localhost:8080/view-employees" class="nav-link">Employees</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav mr-3">
+                <li class="nav-item dropdown">
+                    <a id="navDropDown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">
+                        Welcome Alan
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="./employeeProfileEdit.html" class="dropdown-item">profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="./login.html" class="dropdown-item">logout</a>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </nav>
+    <div class="wrapper mx-auto p-4">
+        <h5>Pending Reimbursement Request</h5>
+        <br>
+        <form class="form-inline d-flex">
+            <div class="form-group mr-3">
+                <label for="employeeName" class="mr-3">Employee Full Name:</label>
+                <input type="text" id="employeeName" name="employeeName" class="form-control">
+            </div>
+        
+            <div class="form-group mr-3">
+                <button type="submit" class="btn btn-primary">FILTER</button>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn btn-outline-danger">RESET</button>
+            </div>
+        </form>
+        <br>
+        <table class="table">
+            <thead>
+                <th scope="col">Id</th>
+                <th scope="col">Type</th>
+                <th scope="col">Date</th>
+                <th scope="col">File</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+            </thead>
+            <tbody>
+                <th scope="row">1</th>
+                <td>Certification</td>
+                <td>2020-07-02</td>
+                <td><a href="#">receipt.jpg</a></td>
+                <td>OSA</td>
+                <td>
+                    <a href="#">APPROVE</a> |
+                    <a href="#">DENY</a>
+                </td>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- register new employee modal -->
+    <div class="modal fade" id="registerNewEmployee" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Register New Employee</h5>
+            <button type="button" class="close" data-dismiss="modal">
+                <span>&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form action="register">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" name="first_name" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" name="last_name" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+                <button type="submit" class="btn btn-primary">SUBMIT</button>
+            </div>
+        </div>
+        </div>
+    </div>
+        
+        
+
+    <!-- custom js -->
+    <script src="static/Scripts/clientRouteGuard.js"></script>
+</body>
+</html>

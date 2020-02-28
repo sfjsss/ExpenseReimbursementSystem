@@ -30,7 +30,7 @@ public class FrontController extends DefaultServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		requestHelper.processPost(request, response);
 	}
 
 }

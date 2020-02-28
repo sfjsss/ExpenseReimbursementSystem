@@ -11,6 +11,9 @@
     <!-- custom css -->
     <link rel="stylesheet" href="static/Styles/home.css">
 
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -23,7 +26,7 @@
         <h2 class="text-center">Welcome to Expense Reimbursement System (ERS)</h2>
         <div class="card p-5 mt-3">
             <h3 class="text-center">LOGIN</h3>
-            <form class="my-3">
+            <form id="loginForm" class="my-3">
                 <div class="form-group row">
                     <label for="email" class="col-3 col-form-label">email:</label>
                     <div class="col-9">
@@ -31,16 +34,22 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group row mt-4">
                     <label for="password" class="col-3 col-form-label">password:</label>
                     <div class="col-9">
                         <input id="password" name="password" type="password" class="form-control">
                     </div>
                 </div>
 
+                <div class="form-group row">
+                    <div id="loginAlert" class="alert alert-danger col-12" role="alert" hidden>
+                        Invalid Credential
+                    </div>
+                </div>
+
                 <div class="form-group row mt-4">
                     <div class="col-12 d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary">SUBMIT</button>
+                        <button id="loginBtn" type="submit" class="btn btn-primary">SUBMIT</button>
                     </div>
                 </div>
             </form>
@@ -57,5 +66,7 @@
             </div>
         </div>
     </div>
+
+    <script src="static/Scripts/login.js"></script>
 </body>
 </html>

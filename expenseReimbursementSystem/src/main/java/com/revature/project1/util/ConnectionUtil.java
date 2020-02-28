@@ -10,6 +10,12 @@ public class ConnectionUtil {
 	
 	public static Connection getConnection() throws SQLException {
 		
+		try {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e) {
+			System.out.println("Unable to load driver");
+		}
+		
 		boolean isTest = Boolean.valueOf(System.getenv("DB_TEST"));
 		if (isTest) {
 			return getH2Connection();

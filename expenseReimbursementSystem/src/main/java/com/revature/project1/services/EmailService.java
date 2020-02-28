@@ -36,7 +36,15 @@ public class EmailService {
 		});
 		
 		Message message = prepareMessage(session, senderEmail, recipient, subject, content);
-		Transport.send(message);
+		Runnable sendMessageJob = () -> {
+			try {
+				Transport.send(message);
+			} catch (MessagingException e) {
+				e.printStackTrace();
+			}
+		};
+		Thread sendMessage = new Thread(sendMessageJob);
+		sendMessage.start();
 	}
 	
 	private static Message prepareMessage(Session session, String senderEmail, String recipient, String subject, String content) {
