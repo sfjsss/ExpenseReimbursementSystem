@@ -22,4 +22,12 @@ public class AuthDelegate {
 			response.sendError(401);
 		}
 	}
+	
+	public boolean isAuthorized(HttpServletRequest request, HttpServletResponse response) {
+		String authToken = request.getHeader("authorization");
+		
+		if (authToken != null) {
+			
+		}
+	}
 }

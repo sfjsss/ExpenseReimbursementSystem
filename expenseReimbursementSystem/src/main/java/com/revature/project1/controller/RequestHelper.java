@@ -27,15 +27,19 @@ public class RequestHelper {
 	
 	public void processPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String path = request.getServletPath();
-		switch(path) {
-		case "/authenticate":
-			authDelegate.authenticate(request, response);
-			break;
-		case "/api/employees":
-			employeeDelegate.registerEmployee(request, response);
-			break;
-		default:
-			response.sendError(405);
+		if (path.startsWith("/api/")) {
+			
+		} else {
+			switch(path) {
+			case "/authenticate":
+				authDelegate.authenticate(request, response);
+				break;
+			case "/api/employees":
+				employeeDelegate.registerEmployee(request, response);
+				break;
+			default:
+				response.sendError(405);
+			}
 		}
 	}
 }

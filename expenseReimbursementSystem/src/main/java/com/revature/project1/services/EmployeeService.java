@@ -24,4 +24,8 @@ public class EmployeeService {
 		
 		return token;
 	}
+	
+	public boolean isUserValid(String email, int employee_id) {
+		
+	}
 }
