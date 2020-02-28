@@ -27,5 +27,6 @@ function registerEmployee(event) {
     }
 
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.setRequestHeader("authorization", sessionStorage.getItem("token"));
     xhr.send(formData);
 }
