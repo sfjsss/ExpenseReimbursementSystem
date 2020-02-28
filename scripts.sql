@@ -12,6 +12,7 @@ create table reimbursement (
 	reimbursement_id serial constraint pk_reimbursement_id primary key,
 	reimbursement_type varchar,
 	reimbursement_time timestamp,
+	reimbursement_amount numeric,
 	reimbursement_description varchar,
 	receipt_name varchar,
 	receipt_path varchar,
@@ -29,6 +30,9 @@ select * from reimbursement inner join employee as requester on reimbursement.re
 --reset testing
 truncate table employee, reimbursement;
 drop table reimbursement;
+
+--dev
+delete from employee where employee_id != 3;
 
 
 
