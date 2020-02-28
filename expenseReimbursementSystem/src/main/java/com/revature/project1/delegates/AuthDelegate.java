@@ -27,7 +27,11 @@ public class AuthDelegate {
 		String authToken = request.getHeader("authorization");
 		
 		if (authToken != null) {
-			
+			String[] decodedToken = authToken.split("&");
+			if (es.isUserValid(decodedToken[2], Integer.parseInt(decodedToken[0]))) {
+				return true;
+			}
 		}
+		return false;
 	}
 }

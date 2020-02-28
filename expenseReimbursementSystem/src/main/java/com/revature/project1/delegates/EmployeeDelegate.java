@@ -26,6 +26,11 @@ public class EmployeeDelegate {
 		String hashedPw = BCrypt.hashpw("password", BCrypt.gensalt());
 		employee.setPass(hashedPw);
 		
+		if (employee.getEmail().equals("") || employee.getFirst_name().equals("") || employee.getLast_name().equals("")) {
+			response.sendError(400);
+			return;
+		}
+		
 		int result = es.createEmployee(employee);
 		if (result != 0) {
 			response.setStatus(200);

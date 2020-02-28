@@ -26,6 +26,12 @@ public class EmployeeService {
 	}
 	
 	public boolean isUserValid(String email, int employee_id) {
+		Employee employee = ed.isEmailExist(email);
 		
+		if (employee != null && employee.getEmployee_id() == employee_id) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
