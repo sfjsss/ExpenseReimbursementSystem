@@ -1,22 +1,22 @@
 -- create tables
 create table employee (
 	employee_id serial constraint pk_employee_id primary key,
-	email varchar,
-	employee_type varchar,
-	first_name varchar,
-	last_name varchar,
-	pass varchar
+	email varchar unique not null,
+	employee_type varchar not null,
+	first_name varchar not null,
+	last_name varchar not null,
+	pass varchar not null
 );
 
 create table reimbursement (
 	reimbursement_id serial constraint pk_reimbursement_id primary key,
-	reimbursement_type varchar,
-	reimbursement_time timestamp,
-	reimbursement_amount numeric,
-	reimbursement_description varchar,
+	reimbursement_type varchar not null,
+	reimbursement_time timestamp not null,
+	reimbursement_amount numeric not null,
+	reimbursement_description varchar not null,
 	receipt_name varchar,
 	receipt_path varchar,
-	reimbursement_status varchar,
+	reimbursement_status varchar not null,
 	requester_id integer references employee(employee_id),
 	processor_id integer references employee(employee_id)
 );
@@ -30,6 +30,7 @@ select * from reimbursement inner join employee as requester on reimbursement.re
 --reset testing
 truncate table employee, reimbursement;
 drop table reimbursement;
+drop table employee;
 
 --dev
 delete from employee where employee_id != 3;

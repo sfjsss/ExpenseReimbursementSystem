@@ -19,7 +19,10 @@ public class RequestHelper {
 	public void processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getServletPath();
 		if (path.startsWith("/api/")) {
-			
+			if (!authDelegate.isAuthorized(request, response)) {
+				response.sendError(401);
+				return;
+			}
 		} else {
 			viewDelegate.resolveView(request, response);
 		}
@@ -28,14 +31,21 @@ public class RequestHelper {
 	public void processPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String path = request.getServletPath();
 		if (path.startsWith("/api/")) {
+			if (!authDelegate.isAuthorized(request, response)) {
+				response.sendError(401);
+				return;
+			}
 			
+			String record = path.substring(5);
+			if (record.startsWith("employees")) {
+				employeeDelegate.registerEmployee(request, response);
+			} else {
+				response.sendError(404, "Request record(s) not found."); 
+			}
 		} else {
 			switch(path) {
 			case "/authenticate":
 				authDelegate.authenticate(request, response);
-				break;
-			case "/api/employees":
-				employeeDelegate.registerEmployee(request, response);
 				break;
 			default:
 				response.sendError(405);

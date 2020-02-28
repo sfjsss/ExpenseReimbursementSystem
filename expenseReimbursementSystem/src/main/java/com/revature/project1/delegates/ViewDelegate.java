@@ -10,7 +10,6 @@ public class ViewDelegate {
 
 	public void resolveView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getServletPath();
-		System.out.println("In view delegate: " + path);
 		
 		switch(path) {
 		case "/login":
