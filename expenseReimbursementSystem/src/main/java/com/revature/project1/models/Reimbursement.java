@@ -10,6 +10,7 @@ public class Reimbursement implements Serializable {
 	private int reimbursement_id;
 	private String reimbursement_type;
 	private Timestamp reimbursement_time;
+	private Double reimbursement_amount;
 	private String reimbursement_description;
 	private String receipt_name;
 	private String receipt_path;
@@ -43,6 +44,14 @@ public class Reimbursement implements Serializable {
 
 	public void setReimbursement_time(Timestamp reimbursement_time) {
 		this.reimbursement_time = reimbursement_time;
+	}
+
+	public Double getReimbursement_amount() {
+		return reimbursement_amount;
+	}
+
+	public void setReimbursement_amount(Double reimbursement_amount) {
+		this.reimbursement_amount = reimbursement_amount;
 	}
 
 	public String getReimbursement_description() {
@@ -100,6 +109,7 @@ public class Reimbursement implements Serializable {
 		result = prime * result + ((processor == null) ? 0 : processor.hashCode());
 		result = prime * result + ((receipt_name == null) ? 0 : receipt_name.hashCode());
 		result = prime * result + ((receipt_path == null) ? 0 : receipt_path.hashCode());
+		result = prime * result + ((reimbursement_amount == null) ? 0 : reimbursement_amount.hashCode());
 		result = prime * result + ((reimbursement_description == null) ? 0 : reimbursement_description.hashCode());
 		result = prime * result + reimbursement_id;
 		result = prime * result + ((reimbursement_status == null) ? 0 : reimbursement_status.hashCode());
@@ -132,6 +142,11 @@ public class Reimbursement implements Serializable {
 			if (other.receipt_path != null)
 				return false;
 		} else if (!receipt_path.equals(other.receipt_path))
+			return false;
+		if (reimbursement_amount == null) {
+			if (other.reimbursement_amount != null)
+				return false;
+		} else if (!reimbursement_amount.equals(other.reimbursement_amount))
 			return false;
 		if (reimbursement_description == null) {
 			if (other.reimbursement_description != null)
@@ -166,10 +181,11 @@ public class Reimbursement implements Serializable {
 	@Override
 	public String toString() {
 		return "Reimbursement [reimbursement_id=" + reimbursement_id + ", reimbursement_type=" + reimbursement_type
-				+ ", reimbursement_time=" + reimbursement_time + ", reimbursement_description="
-				+ reimbursement_description + ", receipt_name=" + receipt_name + ", receipt_path=" + receipt_path
-				+ ", reimbursement_status=" + reimbursement_status + ", requester=" + requester + ", processor="
-				+ processor + "]";
+				+ ", reimbursement_time=" + reimbursement_time + ", reimbursement_amount=" + reimbursement_amount
+				+ ", reimbursement_description=" + reimbursement_description + ", receipt_name=" + receipt_name
+				+ ", receipt_path=" + receipt_path + ", reimbursement_status=" + reimbursement_status + ", requester="
+				+ requester + ", processor=" + processor + "]";
 	}
+
 	
 }
