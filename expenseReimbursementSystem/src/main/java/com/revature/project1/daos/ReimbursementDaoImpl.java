@@ -77,7 +77,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 
 	@Override
 	public int createNewReimbursement(Reimbursement r) {
-		String sql = "insert into reimbursement (reimbursement_type, reimbursement_time, reimbursement_amount, reimbursement_description, receipt_name, receipt_path, reimbursement_status, requester_id, processor_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into reimbursement (reimbursement_type, reimbursement_time, reimbursement_amount, reimbursement_description, receipt_name, receipt_path, reimbursement_status, requester_id) values (?, ?, ?, ?, ?, ?, ?, ?)";
 		int affectedRows = 0;
 		
 		try (Connection c = ConnectionUtil.getConnection();
@@ -91,7 +91,6 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			ps.setString(6, r.getReceipt_path());
 			ps.setString(7, r.getReimbursement_status());
 			ps.setInt(8, r.getRequester().getEmployee_id());
-			ps.setInt(9, r.getProcessor().getEmployee_id());
 			
 			affectedRows = ps.executeUpdate();
 			
