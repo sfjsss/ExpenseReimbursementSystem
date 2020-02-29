@@ -51,8 +51,8 @@
         </div>
         
     </nav>
-    <div class="wrapper mx-auto p-4">
-        <form class="form-inline">
+    <div class="wrapper mx-auto p-4">        
+        <form action="/submit-reimbursement" method="POST" class="form-inline" enctype="multipart/form-data">
             <div class="form-group mr-3">
                 <label for="type" class="mr-3">Type:</label>
                 <select class="form-control" name="type" id="type">
@@ -65,6 +65,10 @@
                 <input type="date" id="date" name="date" class="form-control">
             </div>
             <div class="form-group mr-3">
+                <label for="amount" class="mr-3">Amount:</label>
+                <input type="text" id="amount" name="amount" class="form-control">
+            </div>
+            <div class="form-group mr-3">
                 <label for="description" class="mr-3">Description:</label>
                 <input type="text" id="description" name="description" class="form-control">
             </div>
@@ -72,12 +76,14 @@
             <div class="form-group mr-3">
                 <div class="custom-file">
                     <input type="file" name="file" class="custom-file-input" id="file">
+                    <input id="formUserId" type="hidden" name="userId">
+                    <input id="formUserEmail" type="hidden" name="userEmail">
                     <label class="custom-file-label justify-content-start" for="file">Upload file</label>
                 </div>
             </div>
         
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">SUBMIT REQUEST</button>
+                <button id="submitReimBtn" type="submit" class="btn btn-primary">SUBMIT REQUEST</button>
             </div>
         </form>
         <br>
@@ -95,8 +101,25 @@
         </table>
     </div>
         
-        
-        
+    <!-- submit reimbursement confirmed modal -->
+    <div class="modal fade" id="confirmReimSubmission" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Message</h5>
+            <button type="button" class="close" data-dismiss="modal">
+                <span>&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmEmployeeRegisteredBody">A new reimbursement has been submitted.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+            </div>
+        </div>
+        </div>
+    </div>
 
     <!-- custom js -->
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>

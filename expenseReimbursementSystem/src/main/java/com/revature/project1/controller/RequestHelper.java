@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.project1.delegates.AuthDelegate;
 import com.revature.project1.delegates.EmployeeDelegate;
+import com.revature.project1.delegates.ReimbursementDelegate;
 import com.revature.project1.delegates.ViewDelegate;
 
 public class RequestHelper {
@@ -15,6 +16,7 @@ public class RequestHelper {
 	private ViewDelegate viewDelegate = new ViewDelegate();
 	private AuthDelegate authDelegate = new AuthDelegate();
 	private EmployeeDelegate employeeDelegate = new EmployeeDelegate();
+	private ReimbursementDelegate rd = new ReimbursementDelegate();
 
 	public void processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getServletPath();
@@ -46,6 +48,9 @@ public class RequestHelper {
 			switch(path) {
 			case "/authenticate":
 				authDelegate.authenticate(request, response);
+				break;
+			case "/submit-reimbursement":
+				rd.submitReimbursement(request, response);
 				break;
 			default:
 				response.sendError(405);

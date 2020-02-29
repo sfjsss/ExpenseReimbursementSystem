@@ -34,4 +34,8 @@ public class EmployeeService {
 			return false;
 		}
 	}
+	
+	public Employee getEmployeeByEmail(String email) {
+		return ed.isEmailExist(email);
+	}
 }
