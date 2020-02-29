@@ -34,6 +34,7 @@ drop table employee;
 
 --dev
 delete from employee where employee_id != 3;
+truncate table reimbursement;
 
 
 
