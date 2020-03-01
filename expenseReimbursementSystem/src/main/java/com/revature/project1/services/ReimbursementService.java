@@ -31,6 +31,10 @@ public class ReimbursementService {
 		return results;
 	}
 	
+	public List<Reimbursement> getAllResolvedReimbursementsById(int employeeId) {
+		return rd.getAllResolvedReimbursementById(employeeId);
+	}
+	
 	public List<Reimbursement> getAllReimbursementsByStatus(String type) {	
 		 return rd.getAllReimbursementsByStatus(type);
 	}

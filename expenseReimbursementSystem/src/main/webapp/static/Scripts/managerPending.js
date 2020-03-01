@@ -46,6 +46,7 @@ function renderReimbursement(reimbursement) {
                             <td>$${reimbursement.reimbursement_amount}</td>
                             <td><a href="http://127.0.0.1:8887${reimbursement.receipt_path}" target="_blank">${reimbursement.receipt_name}</a></td>
                             <td>${reimbursement.reimbursement_description}</td>
+                            <td>${reimbursement.requester.first_name} ${reimbursement.requester.last_name}</td>
                             <td><a href="#" onclick="updateReimbursement(${reimbursement.reimbursement_id}, 'approved')">APPROVE</a> | <a href="#" onclick="updateReimbursement(${reimbursement.reimbursement_id}, 'denied')">DENY</a></td>`;
     tableBody.appendChild(tableRow);
 }
