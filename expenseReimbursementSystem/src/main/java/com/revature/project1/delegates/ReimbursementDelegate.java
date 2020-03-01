@@ -95,6 +95,8 @@ public class ReimbursementDelegate {
 		
 		if (employeeId != 0 && type.equals("pending")) {
 			reims = rs.getAllPendingReimbursementsById(employeeId, type);
+		} else if (employeeId == 0 && type.equals("pending")) {
+			reims = rs.getAllReimbursementsByStatus(type);
 		} else {
 			try {
 				response.sendError(404, "Request record(s) not found.");
@@ -108,5 +110,25 @@ public class ReimbursementDelegate {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void updateReimbursement(HttpServletRequest request, HttpServletResponse response) {
+		
+		Integer managerId = Integer.parseInt(request.getParameter("managerId"));
+		Integer reimbursementId = Integer.parseInt(request.getParameter("reimbursementId"));
+		String operation = request.getParameter("operation");
+		
+		boolean result = rs.updateReimbursement(managerId, reimbursementId, operation);
+		
+		if (result) {
+			response.setStatus(200);
+		} else {
+			try {
+				response.sendError(400);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 }
