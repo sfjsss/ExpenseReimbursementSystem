@@ -1,5 +1,7 @@
 package com.revature.project1.services;
 
+import java.util.List;
+
 import org.mindrot.jbcrypt.BCrypt;
 
 import com.revature.project1.daos.EmployeeDao;
@@ -46,5 +48,9 @@ public class EmployeeService {
 		} else {
 			return true;
 		}
+	}
+	
+	public List<Employee> getAllEmployees() {
+		return ed.getAllEmployees();
 	}
 }

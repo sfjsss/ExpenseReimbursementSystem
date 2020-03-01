@@ -2,6 +2,8 @@ package com.revature.project1.delegates;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +37,6 @@ public class EmployeeDelegate {
 		
 		int result = es.createEmployee(employee);
 		if (result != 0) {
-			response.setStatus(200);
 			try {
 				emailService.sendEmail(request.getParameter("email"), "ERS: you have been registered", "email: " + request.getParameter("email") + "\npassword: password \nPlease change your password after your logged in.");
 			} catch (MessagingException e) {
@@ -60,7 +61,14 @@ public class EmployeeDelegate {
 			} else {
 				response.sendError(400);
 			}
-		}
+		}	
+	}
+	
+	public void getAllEmployees(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		List<Employee> employees = es.getAllEmployees();
 		
+		try (PrintWriter pw = response.getWriter()) {
+			pw.write(new ObjectMapper().writeValueAsString(employees));
+		}
 	}
 }

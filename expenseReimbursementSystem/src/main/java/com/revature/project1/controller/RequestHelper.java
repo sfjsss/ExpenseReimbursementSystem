@@ -29,6 +29,8 @@ public class RequestHelper {
 			String record = path.substring(5);
 			if (record.startsWith("reimbursements")) {
 				rd.getReimbursements(request, response);
+			} else if (record.startsWith("employees")) {
+				employeeDelegate.getAllEmployees(request, response);
 			} else {
 				response.sendError(404, "Request record(s) not found.");
 			}
