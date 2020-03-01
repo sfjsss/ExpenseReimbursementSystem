@@ -25,11 +25,9 @@ public class ReimbursementService {
 		List<Reimbursement> results = new ArrayList<>();
 		
 		if (employeeId != 0) {
-			System.out.println("rd triggered");
 			results = rd.getAllReimbursementsByEmployeeId(employeeId, type);
 		}
 		
-		System.out.println("result size is " + results.size());
 		return results;
 	}
 }

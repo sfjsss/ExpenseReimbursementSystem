@@ -20,7 +20,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	@Override
 	public List<Reimbursement> getAllReimbursementsByEmployeeId(int employeeId, String status) {
 		
-		String sql = "select * from reimbursement inner join employee as requester on reimbursement.requester_id = requester.employee_id full join employee as processor on reimbursement.processor_id = processor.employee_id where requester.employee_id = ? and reimbursement_status = ?";
+		String sql = "select * from reimbursement inner join employee as requester on reimbursement.requester_id = requester.employee_id full join employee as processor on reimbursement.processor_id = processor.employee_id where requester.employee_id = ? and reimbursement_status = ? order by reimbursement_id desc";
 		ResultSet rs = null;
 		List<Reimbursement> reimbursements = new ArrayList<>();
 		

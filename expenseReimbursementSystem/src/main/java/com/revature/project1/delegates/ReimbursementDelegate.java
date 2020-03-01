@@ -49,15 +49,7 @@ public class ReimbursementDelegate {
 			e.printStackTrace();
 		}
 		String fileName = Paths.get(file.getSubmittedFileName()).getFileName().toString();
-		String file_path = "/Users/macair/Desktop/revature/projectOne/receipts_storage/" + fileName;
-		System.out.println(type);
-		System.out.println(date);
-		System.out.println(amount);
-		System.out.println(parsedAmount);
-		System.out.println(description);
-		System.out.println(file);
-		System.out.println(fileName);
-		System.out.println(file_path);
+		String file_path = "/Users/macair/Desktop/revature/projectOne/localServer/receipts_storage/" + fileName;
 		
 		try {
 			file.write(file_path);
@@ -74,7 +66,7 @@ public class ReimbursementDelegate {
 		reim.setReimbursement_amount(parsedAmount);
 		reim.setReimbursement_description(description);
 		reim.setReceipt_name(fileName);
-		reim.setReceipt_path(file_path);
+		reim.setReceipt_path("/receipts_storage/" + fileName);
 		reim.setReimbursement_status("pending");
 		reim.setRequester(requester);
 		
@@ -96,17 +88,12 @@ public class ReimbursementDelegate {
 	}
 	
 	public void getReimbursements(HttpServletRequest request, HttpServletResponse response) {
-		
-		System.out.println("getReim delegate triggered");
-		
+				
 		Integer employeeId = Integer.parseInt(request.getParameter("employeeId"));
 		String type = request.getParameter("type");
 		List<Reimbursement> reims = new ArrayList<>();
 		
 		if (employeeId != 0 && type.equals("pending")) {
-			System.out.println("reim service called");
-			System.out.println("employeeId: " + employeeId);
-			System.out.println("type: " + type);
 			reims = rs.getAllPendingReimbursementsById(employeeId, type);
 		} else {
 			try {
@@ -114,11 +101,6 @@ public class ReimbursementDelegate {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
-		
-		System.out.println(reims.size());
-		for (Reimbursement re: reims) {
-			System.out.println(re);
 		}
 		
 		try (PrintWriter pw = response.getWriter()) {
