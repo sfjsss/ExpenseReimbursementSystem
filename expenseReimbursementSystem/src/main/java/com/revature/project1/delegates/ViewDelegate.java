@@ -27,6 +27,9 @@ public class ViewDelegate {
 		case "/employee-resolved":
 			request.getRequestDispatcher("/static/Views/employeeResolvedReq.html").forward(request, response);
 			break;
+		case "/employee-profile":
+			request.getRequestDispatcher("/static/Views/employeeProfileEdit.html").forward(request, response);
+			break;
 		case "/":
 			response.sendRedirect("/login");
 			break;
