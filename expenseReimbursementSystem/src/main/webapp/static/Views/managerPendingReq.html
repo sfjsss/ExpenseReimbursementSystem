@@ -75,21 +75,12 @@
                 <th scope="col">Id</th>
                 <th scope="col">Type</th>
                 <th scope="col">Date</th>
+                <th scope="col">Amount</th>
                 <th scope="col">File</th>
                 <th scope="col">Description</th>
                 <th scope="col">Actions</th>
             </thead>
-            <tbody>
-                <th scope="row">1</th>
-                <td>Certification</td>
-                <td>2020-07-02</td>
-                <td><a href="#">receipt.jpg</a></td>
-                <td>OSA</td>
-                <td>
-                    <a href="#">APPROVE</a> |
-                    <a href="#">DENY</a>
-                </td>
-            </tbody>
+            <tbody id="requestsTable"></tbody>
         </table>
     </div>
 
@@ -133,5 +124,6 @@
 
     <!-- custom js -->
     <script src="static/Scripts/clientRouteGuard.js"></script>
+    <script src="static/Scripts/managerPending.js"></script>
 </body>
 </html>

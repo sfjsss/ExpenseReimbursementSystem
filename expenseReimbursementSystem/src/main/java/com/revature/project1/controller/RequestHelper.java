@@ -64,4 +64,23 @@ public class RequestHelper {
 			}
 		}
 	}
+	
+	public void processPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String path = request.getServletPath();
+		if (path.startsWith("/api/")) {
+			if (!authDelegate.isAuthorized(request, response)) {
+				response.sendError(401);
+				return;
+			}
+			
+			String record = path.substring(5);
+			if (record.startsWith("reimbursement")) {
+				rd.updateReimbursement(request, response);
+			} else {
+				response.sendError(404, "Request record(s) not found.");
+			}
+		} else {
+			response.sendError(405);
+		}
+	}
 }

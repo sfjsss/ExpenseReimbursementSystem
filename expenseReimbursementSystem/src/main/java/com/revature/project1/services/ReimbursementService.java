@@ -30,4 +30,17 @@ public class ReimbursementService {
 		
 		return results;
 	}
+	
+	public List<Reimbursement> getAllReimbursementsByStatus(String type) {	
+		 return rd.getAllReimbursementsByStatus(type);
+	}
+	
+	public boolean updateReimbursement(int managerId, int reimbursementId, String status) {
+		int result = rd.updateReimbursementStatus(managerId, reimbursementId, status);
+		if (result == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }
