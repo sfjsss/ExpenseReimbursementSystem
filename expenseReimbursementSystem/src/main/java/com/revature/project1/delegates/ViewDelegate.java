@@ -18,6 +18,9 @@ public class ViewDelegate {
 		case "/manager-pending":
 			request.getRequestDispatcher("/static/Views/managerPendingReq.html").forward(request, response);
 			break;
+		case "/manager-resolved":
+			request.getRequestDispatcher("/static/Views/managerResolvedReq.html").forward(request, response);
+			break;
 		case "/view-employees":
 			request.getRequestDispatcher("/static/Views/managerViewEmpl.html").forward(request, response);
 			break;
