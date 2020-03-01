@@ -1,7 +1,11 @@
 * {
     box-sizing: border-box;
-    zoom: 90%;
+    zoom: 98%;
     /* border: 1px solid red; */
+}
+
+.container {
+    width: 50vw;
 }
 
 .btn {
