@@ -53,12 +53,27 @@
 
     <div class="container mt-5">
         <div class="card p-5 mt-3">
-            <h3 class="text-center">Alan's profile</h3>
-            <form class="my-3">
+            <h3 class="text-center">Profile</h3>
+            <form id="profileForm" class="my-3">
                 <div class="form-group row">
                     <label for="email" class="col-3 col-form-label">email:</label>
                     <div class="col-9">
                         <input id="email" name="email" type="email" class="form-control">
+                        <input id="employeeId" type="hidden" name="employeeId">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="first_name" class="col-3 col-form-label">first name:</label>
+                    <div class="col-9">
+                        <input id="first_name" name="first_name" type="text" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="last_name" class="col-3 col-form-label">last name:</label>
+                    <div class="col-9">
+                        <input id="last_name" name="last_name" type="text" class="form-control">
                     </div>
                 </div>
 
@@ -78,7 +93,7 @@
 
                 <div class="form-group row mt-4">
                     <div class="col-12 d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary">UPDATE</button>
+                        <button id="updateProfileSubmitBtn" type="submit" class="btn btn-primary">UPDATE</button>
                     </div>
                 </div>
             </form>
@@ -106,7 +121,7 @@
             </button>
             </div>
             <div class="modal-body">
-                <p>Your profile has been updated.</p>
+                <p id="updateResult"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>

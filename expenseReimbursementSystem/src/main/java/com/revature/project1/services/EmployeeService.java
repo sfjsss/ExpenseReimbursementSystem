@@ -38,4 +38,13 @@ public class EmployeeService {
 	public Employee getEmployeeByEmail(String email) {
 		return ed.isEmailExist(email);
 	}
+	
+	public boolean updateEmployeeProfile(Employee e) {
+		int result = ed.updateEmployee(e);
+		if (result == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }

@@ -1,5 +1,6 @@
 package com.revature.project1.delegates;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 
 import javax.mail.MessagingException;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.project1.models.Employee;
 import com.revature.project1.services.EmailService;
 import com.revature.project1.services.EmployeeService;
@@ -42,5 +44,23 @@ public class EmployeeDelegate {
 		} else {
 			response.sendError(400);
 		}
+	}
+	
+	public void updateEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		try (BufferedReader requestReader = request.getReader()) {
+			String newEmployee = requestReader.readLine();
+			ObjectMapper om = new ObjectMapper();
+			Employee ne = om.readValue(newEmployee, Employee.class);
+			
+			String hashedPw = BCrypt.hashpw(ne.getPass(), BCrypt.gensalt());
+			ne.setPass(hashedPw);
+			
+			if (es.updateEmployeeProfile(ne)) {
+				response.setStatus(200);
+			} else {
+				response.sendError(400);
+			}
+		}
+		
 	}
 }

@@ -76,6 +76,8 @@ public class RequestHelper {
 			String record = path.substring(5);
 			if (record.startsWith("reimbursement")) {
 				rd.updateReimbursement(request, response);
+			} else if (record.startsWith("employee")) {
+				employeeDelegate.updateEmployee(request, response);
 			} else {
 				response.sendError(404, "Request record(s) not found.");
 			}
