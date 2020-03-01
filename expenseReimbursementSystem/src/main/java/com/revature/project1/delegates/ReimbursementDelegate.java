@@ -1,17 +1,17 @@
 package com.revature.project1.delegates;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Paths;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.project1.models.Employee;
 import com.revature.project1.models.Reimbursement;
 import com.revature.project1.services.EmployeeService;
@@ -36,17 +36,7 @@ public class ReimbursementDelegate {
 		}
 		
 		String type = request.getParameter("type");
-		String date = request.getParameter("date");
-		
-		Timestamp timestamp = null;
-		try {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			Date parsedDate = dateFormat.parse(date);
-			timestamp = new Timestamp(parsedDate.getTime());
-		} catch (ParseException e2) {
-			e2.printStackTrace();
-		}
-		
+		String date = request.getParameter("date");		
 		String amount = request.getParameter("amount");
 		Double parsedAmount = Double.parseDouble(amount);
 		String description = request.getParameter("description");
@@ -59,16 +49,7 @@ public class ReimbursementDelegate {
 			e.printStackTrace();
 		}
 		String fileName = Paths.get(file.getSubmittedFileName()).getFileName().toString();
-		String file_path = "/Users/macair/Desktop/revature/projectOne/receipts_storage/" + fileName;
-		System.out.println(type);
-		System.out.println(date);
-		System.out.println(timestamp);
-		System.out.println(amount);
-		System.out.println(parsedAmount);
-		System.out.println(description);
-		System.out.println(file);
-		System.out.println(fileName);
-		System.out.println(file_path);
+		String file_path = "/Users/macair/Desktop/revature/projectOne/localServer/receipts_storage/" + fileName;
 		
 		try {
 			file.write(file_path);
@@ -81,11 +62,11 @@ public class ReimbursementDelegate {
 				
 		Reimbursement reim = new Reimbursement();
 		reim.setReimbursement_type(type);
-		reim.setReimbursement_time(timestamp);
+		reim.setReimbursement_time(date);
 		reim.setReimbursement_amount(parsedAmount);
 		reim.setReimbursement_description(description);
 		reim.setReceipt_name(fileName);
-		reim.setReceipt_path(file_path);
+		reim.setReceipt_path("/receipts_storage/" + fileName);
 		reim.setReimbursement_status("pending");
 		reim.setRequester(requester);
 		
@@ -103,6 +84,29 @@ public class ReimbursementDelegate {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+	
+	public void getReimbursements(HttpServletRequest request, HttpServletResponse response) {
+				
+		Integer employeeId = Integer.parseInt(request.getParameter("employeeId"));
+		String type = request.getParameter("type");
+		List<Reimbursement> reims = new ArrayList<>();
+		
+		if (employeeId != 0 && type.equals("pending")) {
+			reims = rs.getAllPendingReimbursementsById(employeeId, type);
+		} else {
+			try {
+				response.sendError(404, "Request record(s) not found.");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		try (PrintWriter pw = response.getWriter()) {
+			pw.write(new ObjectMapper().writeValueAsString(reims));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

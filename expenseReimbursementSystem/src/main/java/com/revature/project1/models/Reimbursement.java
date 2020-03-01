@@ -1,7 +1,6 @@
 package com.revature.project1.models;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 public class Reimbursement implements Serializable {
 
@@ -9,7 +8,7 @@ public class Reimbursement implements Serializable {
 	
 	private int reimbursement_id;
 	private String reimbursement_type;
-	private Timestamp reimbursement_time;
+	private String reimbursement_time;
 	private Double reimbursement_amount;
 	private String reimbursement_description;
 	private String receipt_name;
@@ -38,11 +37,11 @@ public class Reimbursement implements Serializable {
 		this.reimbursement_type = reimbursement_type;
 	}
 
-	public Timestamp getReimbursement_time() {
+	public String getReimbursement_time() {
 		return reimbursement_time;
 	}
 
-	public void setReimbursement_time(Timestamp reimbursement_time) {
+	public void setReimbursement_time(String reimbursement_time) {
 		this.reimbursement_time = reimbursement_time;
 	}
 

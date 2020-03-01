@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.revature.project1.models.Employee;
@@ -16,7 +20,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	@Override
 	public List<Reimbursement> getAllReimbursementsByEmployeeId(int employeeId, String status) {
 		
-		String sql = "select * from reimbursement inner join employee as requester on reimbursement.requester_id = requester.employee_id inner join employee as processor on reimbursement.processor_id = processor.employee_id where requester.employee_id = ? and reimbursement_status = ?";
+		String sql = "select * from reimbursement inner join employee as requester on reimbursement.requester_id = requester.employee_id full join employee as processor on reimbursement.processor_id = processor.employee_id where requester.employee_id = ? and reimbursement_status = ? order by reimbursement_id desc";
 		ResultSet rs = null;
 		List<Reimbursement> reimbursements = new ArrayList<>();
 		
@@ -29,10 +33,15 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			rs = ps.executeQuery();
 			
 			while (rs.next()) {
+				System.out.println("A new reimbursment obj is created");
 				Reimbursement rb = new Reimbursement();
 				rb.setReimbursement_id(rs.getInt(1));
 				rb.setReimbursement_type(rs.getString(2));
-				rb.setReimbursement_time(rs.getTimestamp(3));
+				
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				String parsedTime = dateFormat.format(rs.getTimestamp(3));
+				
+				rb.setReimbursement_time(parsedTime);
 				rb.setReimbursement_amount(rs.getDouble(4));
 				rb.setReimbursement_description(rs.getString(5));
 				rb.setReceipt_name(rs.getString(6));
@@ -57,6 +66,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				processor.setPass(rs.getString(22));
 				rb.setProcessor(processor);
 				
+				System.out.println(rb.toString());
 				reimbursements.add(rb);
 			}
 			
@@ -72,6 +82,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			}
 		}
 		
+		System.out.println("results from daoimpl size: " + reimbursements.size());
 		return reimbursements;
 	}
 
@@ -84,7 +95,17 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				PreparedStatement ps = c.prepareStatement(sql)) {
 			
 			ps.setString(1, r.getReimbursement_type());
-			ps.setTimestamp(2, r.getReimbursement_time());
+			
+			Timestamp timestamp = null;
+			try {
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				Date parsedDate = dateFormat.parse(r.getReimbursement_time());
+				timestamp = new Timestamp(parsedDate.getTime());
+			} catch (ParseException e2) {
+				e2.printStackTrace();
+			}
+			
+			ps.setTimestamp(2, timestamp);
 			ps.setDouble(3, r.getReimbursement_amount());
 			ps.setString(4, r.getReimbursement_description());
 			ps.setString(5, r.getReceipt_name());
@@ -118,7 +139,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 				Reimbursement rb = new Reimbursement();
 				rb.setReimbursement_id(rs.getInt(1));
 				rb.setReimbursement_type(rs.getString(2));
-				rb.setReimbursement_time(rs.getTimestamp(3));
+				rb.setReimbursement_time(rs.getString(3));
 				rb.setReimbursement_amount(rs.getDouble(4));
 				rb.setReimbursement_description(rs.getString(5));
 				rb.setReceipt_name(rs.getString(6));

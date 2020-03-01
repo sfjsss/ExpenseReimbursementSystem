@@ -34,6 +34,8 @@ drop table employee;
 
 --dev
 delete from employee where employee_id != 3;
+truncate table reimbursement;
+select * from reimbursement inner join employee as requester on reimbursement.requester_id = requester.employee_id full join employee as processor on reimbursement.processor_id = processor.employee_id where requester.employee_id = 5 and reimbursement_status = 'pending';
 
 
 

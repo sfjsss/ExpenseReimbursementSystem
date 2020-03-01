@@ -25,6 +25,13 @@ public class RequestHelper {
 				response.sendError(401);
 				return;
 			}
+			
+			String record = path.substring(5);
+			if (record.startsWith("reimbursements")) {
+				rd.getReimbursements(request, response);
+			} else {
+				response.sendError(404, "Request record(s) not found.");
+			}
 		} else {
 			viewDelegate.resolveView(request, response);
 		}
