@@ -112,7 +112,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				employee.setEmployee_type(rs.getString(3));
 				employee.setFirst_name(rs.getString(4));
 				employee.setLast_name(rs.getString(5));
-				employee.setPass(rs.getString(6));
+//				employee.setPass(rs.getString(6));
 				employees.add(employee);
 			}
 			
