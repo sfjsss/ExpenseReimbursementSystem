@@ -51,10 +51,12 @@ public class ReimbursementDelegate {
 		String fileName = Paths.get(file.getSubmittedFileName()).getFileName().toString();
 		String file_path = "/Users/macair/Desktop/revature/projectOne/localServer/receipts_storage/" + fileName;
 		
-		try {
-			file.write(file_path);
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		if (!fileName.equals("")) {
+			try {
+				file.write(file_path);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 		
 		Employee requester = new Employee();
@@ -97,6 +99,8 @@ public class ReimbursementDelegate {
 			reims = rs.getAllPendingReimbursementsById(employeeId, type);
 		} else if (employeeId == 0 && type.equals("pending")) {
 			reims = rs.getAllReimbursementsByStatus(type);
+		} else if (employeeId != 0 && type.equals("resolved")) {
+			reims = rs.getAllResolvedReimbursementsById(employeeId);
 		} else {
 			try {
 				response.sendError(404, "Request record(s) not found.");
