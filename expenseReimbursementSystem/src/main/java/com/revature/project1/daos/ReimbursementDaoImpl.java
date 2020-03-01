@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -264,6 +265,58 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		}
 		
 		return reimbursements;		
+	}
+
+	@Override
+	public List<Reimbursement> getAllResolvedReimbursements() {
+		String sql = "select * from reimbursement inner join employee as requester on reimbursement.requester_id = requester.employee_id inner join employee as processor on reimbursement.processor_id = processor.employee_id where reimbursement_status != 'pending' order by reimbursement_id desc";
+		List<Reimbursement> reimbursements = new ArrayList<>();
+		
+		try (Connection c = ConnectionUtil.getConnection();
+				Statement s = c.createStatement();
+				ResultSet rs = s.executeQuery(sql)) {
+									
+			while (rs.next()) {
+				Reimbursement rb = new Reimbursement();
+				rb.setReimbursement_id(rs.getInt(1));
+				rb.setReimbursement_type(rs.getString(2));
+				
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				String parsedTime = dateFormat.format(rs.getTimestamp(3));
+				
+				rb.setReimbursement_time(parsedTime);
+				rb.setReimbursement_amount(rs.getDouble(4));
+				rb.setReimbursement_description(rs.getString(5));
+				rb.setReceipt_name(rs.getString(6));
+				rb.setReceipt_path(rs.getString(7));
+				rb.setReimbursement_status(rs.getString(8));
+				
+				Employee requester = new Employee();
+				requester.setEmployee_id(rs.getInt(11));
+				requester.setEmail(rs.getString(12));
+				requester.setEmployee_type(rs.getString(13));
+				requester.setFirst_name(rs.getString(14));
+				requester.setLast_name(rs.getString(15));
+//				requester.setPass(rs.getString(16));
+				rb.setRequester(requester);
+				
+				Employee processor = new Employee();
+				processor.setEmployee_id(rs.getInt(17));
+				processor.setEmail(rs.getString(18));
+				processor.setEmployee_type(rs.getString(19));
+				processor.setFirst_name(rs.getString(20));
+				processor.setLast_name(rs.getString(21));
+//				processor.setPass(rs.getString(22));
+				rb.setProcessor(processor);
+				
+				reimbursements.add(rb);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return reimbursements;	
 	}
 
 }

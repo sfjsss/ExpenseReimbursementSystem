@@ -101,6 +101,8 @@ public class ReimbursementDelegate {
 			reims = rs.getAllReimbursementsByStatus(type);
 		} else if (employeeId != 0 && type.equals("resolved")) {
 			reims = rs.getAllResolvedReimbursementsById(employeeId);
+		} else if (employeeId == 0 && type.equals("resolved")) {
+			reims = rs.getAllResolvedReimbursements();
 		} else {
 			try {
 				response.sendError(404, "Request record(s) not found.");
