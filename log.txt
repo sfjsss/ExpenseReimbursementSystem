@@ -1,0 +1,6 @@
+2020-03-02 09:35:16 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 09:35:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 09:35:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 09:35:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 09:35:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 09:35:21 WARN  FrontController:27 method: doGet - doGet handler is triggered

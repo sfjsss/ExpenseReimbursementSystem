@@ -8,10 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.servlets.DefaultServlet;
+import org.apache.log4j.Logger;
 
 @MultipartConfig
 public class FrontController extends DefaultServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger log = Logger.getRootLogger();
 	
 	private RequestHelper requestHelper = new RequestHelper();
        
@@ -21,6 +24,7 @@ public class FrontController extends DefaultServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		log.warn("doGet handler is triggered");
 		String path = request.getServletPath();
 		
 		if (path.startsWith("/static")) {
