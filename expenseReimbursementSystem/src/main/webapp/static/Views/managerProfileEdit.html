@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERS</title>
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="static/Styles/home.css">
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <a href="./employeePendingReq.html" class="navbar-brand">ERS</a>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="manager-pending" class="nav-link">Pending</a>
+                </li>
+                <li class="nav-item">
+                    <a href="manager-resolved" class="nav-link">Resolved</a>
+                </li>
+                <li class="nav-item">
+                    <a href="view-employees" class="nav-link">Employees</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav mr-3">
+                <li class="nav-item dropdown">
+                    <a id="navDropDown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">
+                        Welcome Alan
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="manager-profile" class="dropdown-item">profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a id="logoutBtn" href="#" class="dropdown-item">logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+    </nav>
+
+    <div class="container mt-5">
+        <div class="card p-5 mt-3">
+            <h3 class="text-center">Profile</h3>
+            <form id="profileForm" class="my-3">
+                <div class="form-group row">
+                    <label for="email" class="col-3 col-form-label">email:</label>
+                    <div class="col-9">
+                        <input id="email" name="email" type="email" class="form-control">
+                        <input id="employeeId" type="hidden" name="employeeId">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="first_name" class="col-3 col-form-label">first name:</label>
+                    <div class="col-9">
+                        <input id="first_name" name="first_name" type="text" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="last_name" class="col-3 col-form-label">last name:</label>
+                    <div class="col-9">
+                        <input id="last_name" name="last_name" type="text" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="password" class="col-3 col-form-label">password:</label>
+                    <div class="col-9">
+                        <input id="password" name="password" type="password" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="confirmPassword" class="col-3 col-form-label">confirm PW:</label>
+                    <div class="col-9">
+                        <input id="confirmPassword" name="confirmPassword" type="password" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group row mt-4">
+                    <div class="col-12 d-flex justify-content-center">
+                        <button id="updateProfileSubmitBtn" type="submit" class="btn btn-primary">UPDATE</button>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="text-center">OR</h4>
+                </div>
+            </div>
+            <div class="form-group row mt-4">
+                <div class="col-12 d-flex justify-content-center">
+                    <a id="resetFormBtn" href="#" class="btn btn-outline-danger">CLEAR</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- confirm profile update modal -->
+    <div class="modal fade" id="confirmProfileUpdate" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Message</h5>
+            <button type="button" class="close" data-dismiss="modal">
+                <span>&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <p id="updateResult"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+            </div>
+        </div>
+        </div>
+    </div>
+        
+    <!-- custom js -->
+    <script src="static/Scripts/clientRouteGuard.js"></script>
+    <script src="static/Scripts/employeeProfile.js"></script>
+</body>
+</html>

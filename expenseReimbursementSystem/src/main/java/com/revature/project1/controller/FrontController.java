@@ -24,8 +24,8 @@ public class FrontController extends DefaultServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		log.warn("doGet handler is triggered");
 		String path = request.getServletPath();
+		log.warn("path received: " + path);
 		
 		if (path.startsWith("/static")) {
 			super.doGet(request, response);

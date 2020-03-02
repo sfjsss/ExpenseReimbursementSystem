@@ -31,7 +31,7 @@ function updateEmployeeProfile(event) {
     let updatedEmployee = {
         employee_id: decodedToken[0],
         email: emailField.value,
-        employee_type: "associate",
+        employee_type: decodedToken[1],
         first_name: firstNameField.value,
         last_name: lastNameField.value,
         pass: passField.value
