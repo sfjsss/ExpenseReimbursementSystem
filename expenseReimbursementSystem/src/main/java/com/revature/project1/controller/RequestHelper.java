@@ -61,6 +61,9 @@ public class RequestHelper {
 			case "/submit-reimbursement":
 				rd.submitReimbursement(request, response);
 				break;
+			case "/reset-password":
+				employeeDelegate.resetPassword(request, response);
+				break;
 			default:
 				response.sendError(405);
 			}

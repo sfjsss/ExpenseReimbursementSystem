@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import com.revature.project1.models.Employee;
 import com.revature.project1.util.ConnectionUtil;
 
@@ -121,6 +123,27 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 		
 		return employees;
+	}
+
+	@Override
+	public int resetPassword(String email) {
+		String sql = "update employee set pass = ? where email = ?";
+		int affectedRow = 0;
+		
+		try (Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql)) {
+			
+			String hashedPW = BCrypt.hashpw("password", BCrypt.gensalt());
+			ps.setString(1, hashedPW);
+			ps.setString(2, email);
+			
+			affectedRow = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return affectedRow;
 	}
 	
 	

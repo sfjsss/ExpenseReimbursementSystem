@@ -71,4 +71,8 @@ public class EmployeeDelegate {
 			pw.write(new ObjectMapper().writeValueAsString(employees));
 		}
 	}
+	
+	public void resetPassword(HttpServletRequest request, HttpServletResponse response) {
+		es.resetPassword(request.getParameter("email"));
+	}
 }
