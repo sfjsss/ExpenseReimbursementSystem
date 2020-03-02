@@ -1,6 +1,19 @@
 console.log("managerResolved.js is working");
 
-getAllResolvedReimbursements();
+const searchParams = (new URL(window.location).searchParams);
+let employeeId;
+let employeeFirstName;
+let employeeLastName;
+let searchField = document.getElementById("employeeName");
+if (searchParams.get("employeeId") != null) {
+    employeeId = searchParams.get("employeeId")
+    employeeFirstName = searchParams.get("first_name");
+    employeeLastName = searchParams.get("last_name");
+    searchField.value = employeeFirstName + " " + employeeLastName;
+    getAllResolvedReimbursementsById(employeeId);
+} else {
+    getAllResolvedReimbursements();
+}
 
 function getAllResolvedReimbursements() {
     const url = "http://localhost:8080/api/reimbursements?employeeId=0&type=resolved";
@@ -10,7 +23,24 @@ function getAllResolvedReimbursements() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 & xhr.status == 200) {
             const parsedData = JSON.parse(xhr.response);
-            console.log(parsedData);
+            for (let reimbursement of parsedData) {
+                renderReimbursement(reimbursement);
+            }
+        }
+    }
+    xhr.setRequestHeader("authorization", sessionStorage.getItem("token"));
+    xhr.send();
+}
+
+function getAllResolvedReimbursementsById(employeeId) {
+    const url = `http://localhost:8080/api/reimbursements?employeeId=${employeeId}&type=resolved`;
+    console.log(url);
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("GET", url);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            const parsedData = JSON.parse(xhr.response);
             for (let reimbursement of parsedData) {
                 renderReimbursement(reimbursement);
             }
