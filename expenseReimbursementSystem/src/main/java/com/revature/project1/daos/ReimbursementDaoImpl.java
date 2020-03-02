@@ -1,5 +1,6 @@
 package com.revature.project1.daos;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -181,25 +182,40 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	}
 
 	@Override
-	public int updateReimbursementStatus(int managerId, int reimbursementId, String status) {
+	public String updateReimbursementStatus(int managerId, int reimbursementId, String status) {
 
-		String sql = "update reimbursement set reimbursement_status = ?, processor_id = ? where reimbursement_id = ?";
-		int affectedRows = 0;
+		String sql = "{call updateReimbursement(?, ?, ?)}";
+		ResultSet rs = null;
+		String email = null;
 		
 		try (Connection c = ConnectionUtil.getConnection();
-				PreparedStatement ps = c.prepareStatement(sql)) {
+				CallableStatement cs = c.prepareCall(sql)) {
 			
-			ps.setString(1, status);
-			ps.setInt(2, managerId);
-			ps.setInt(3, reimbursementId);
+			cs.setInt(1, managerId);
+			cs.setInt(2, reimbursementId);
+			cs.setString(3, status);
 	
-			affectedRows = ps.executeUpdate();
+			cs.execute();
+			
+			rs = cs.getResultSet();
+			
+			while (rs.next()) {
+				email = rs.getString(1);
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		
-		return affectedRows;
+		return email;
 	}
 
 	@Override
