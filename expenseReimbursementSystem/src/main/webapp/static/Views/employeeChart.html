@@ -20,18 +20,19 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light px-4">
+        
         <a href="./employeePendingReq.html" class="navbar-brand">ERS</a>
 
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="/employee-pending" class="nav-link">Pending</a>
-                </li>
-                <li class="nav-item active">
-                    <a href="/employee-resolved" class="nav-link">Resolved</a>
+                    <a href="employee-pending" class="nav-link">Pending</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/employee-stats" class="nav-link">Stat</a>
+                    <a href="employee-resolved" class="nav-link">Resolved</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="employee-stats" class="nav-link">Stat</a>
                 </li>
             </ul>
 
@@ -41,7 +42,7 @@
                         Welcome Alan
                     </a>
                     <div class="dropdown-menu">
-                        <a href="./employeeProfileEdit.html" class="dropdown-item">profile</a>
+                        <a href="employee-profile" class="dropdown-item">profile</a>
                         <div class="dropdown-divider"></div>
                         <a id="logoutBtn" href="#" class="dropdown-item">logout</a>
                     </div>
@@ -51,29 +52,14 @@
         
     </nav>
 
-    <div class="wrapper mx-auto p-4">
-        
-        <h5>Resolved Reimbursement Request</h5>
-        <br>
-        <table class="table">
-            <thead>
-                <th scope="col">Id</th>
-                <th scope="col">Type</th>
-                <th scope="col">Date</th>
-                <th scope="col">Amount</th>
-                <th scope="col">File</th>
-                <th scope="col">Description</th>
-                <th scope="col">Result</th>
-            </thead>
-            <tbody id="requestsTable"></tbody>
-        </table>
-    </div>
+    <canvas id="myChart" class="p-4"></canvas>
         
         
         
 
     <!-- custom js -->
     <script src="static/Scripts/clientRouteGuard.js"></script>
-    <script src="static/Scripts/employeeResolved.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="static/Scripts/employeeStat.js"></script>
 </body>
 </html>
