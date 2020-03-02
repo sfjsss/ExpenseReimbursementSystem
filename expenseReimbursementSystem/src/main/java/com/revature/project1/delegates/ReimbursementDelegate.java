@@ -95,7 +95,7 @@ public class ReimbursementDelegate {
 		String type = request.getParameter("type");
 		List<Reimbursement> reims = new ArrayList<>();
 		
-		if (employeeId != 0 && type.equals("pending")) {
+		if (employeeId != 0 && employeeId != -1 && type.equals("pending")) {
 			reims = rs.getAllPendingReimbursementsById(employeeId, type);
 		} else if (employeeId == 0 && type.equals("pending")) {
 			reims = rs.getAllReimbursementsByStatus(type);
@@ -103,6 +103,10 @@ public class ReimbursementDelegate {
 			reims = rs.getAllResolvedReimbursementsById(employeeId);
 		} else if (employeeId == 0 && type.equals("resolved")) {
 			reims = rs.getAllResolvedReimbursements();
+		} else if (employeeId == -1 && type.equals("pending")) {
+			String firstName = request.getParameter("first_name");
+			String lastName = request.getParameter("last_name");
+			reims = rs.getAllReimbursementsByStatusAndName(type, firstName, lastName);
 		} else {
 			try {
 				response.sendError(404, "Request record(s) not found.");

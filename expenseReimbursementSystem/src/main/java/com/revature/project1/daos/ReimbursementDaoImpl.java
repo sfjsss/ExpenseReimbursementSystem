@@ -319,4 +319,69 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		return reimbursements;	
 	}
 
+	@Override
+	public List<Reimbursement> getAllReimbursementsByTypeAndName(String type, String firstName, String lastName) {
+		String sql = "select * from reimbursement inner join employee as requester on reimbursement.requester_id = requester.employee_id full join employee as processor on reimbursement.processor_id = processor.employee_id where reimbursement_status = 'pending' and requester.first_name = ? and requester.last_name = ? order by reimbursement_id desc";
+		ResultSet rs = null;
+		List<Reimbursement> reimbursements = new ArrayList<>();
+		
+		try (Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql)) {
+			
+			ps.setString(1, firstName);
+			ps.setString(2, lastName);
+			
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				Reimbursement rb = new Reimbursement();
+				rb.setReimbursement_id(rs.getInt(1));
+				rb.setReimbursement_type(rs.getString(2));
+				
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				String parsedTime = dateFormat.format(rs.getTimestamp(3));
+				
+				rb.setReimbursement_time(parsedTime);
+				rb.setReimbursement_amount(rs.getDouble(4));
+				rb.setReimbursement_description(rs.getString(5));
+				rb.setReceipt_name(rs.getString(6));
+				rb.setReceipt_path(rs.getString(7));
+				rb.setReimbursement_status(rs.getString(8));
+				
+				Employee requester = new Employee();
+				requester.setEmployee_id(rs.getInt(11));
+				requester.setEmail(rs.getString(12));
+				requester.setEmployee_type(rs.getString(13));
+				requester.setFirst_name(rs.getString(14));
+				requester.setLast_name(rs.getString(15));
+//				requester.setPass(rs.getString(16));
+				rb.setRequester(requester);
+				
+				Employee processor = new Employee();
+				processor.setEmployee_id(rs.getInt(17));
+				processor.setEmail(rs.getString(18));
+				processor.setEmployee_type(rs.getString(19));
+				processor.setFirst_name(rs.getString(20));
+				processor.setLast_name(rs.getString(21));
+//				processor.setPass(rs.getString(22));
+				rb.setProcessor(processor);
+				
+				reimbursements.add(rb);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return reimbursements;			
+	}
+
 }
