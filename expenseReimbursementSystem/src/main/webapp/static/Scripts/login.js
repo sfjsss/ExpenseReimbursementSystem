@@ -1,6 +1,23 @@
 console.log("login.js is working");
 
-document.getElementById("loginBtn").addEventListener("click", requestLogin);
+let emailField = document.getElementById("email");
+let passwordField = document.getElementById("password");
+let loginBtn = document.getElementById("loginBtn");
+
+loginBtn.addEventListener("click", requestLogin);
+emailField.addEventListener("change", loginFormValidation);
+passwordField.addEventListener("change", loginFormValidation);
+
+function loginFormValidation() {
+    let emailField = document.getElementById("email");
+    let passwordField = document.getElementById("password");
+    let loginBtn = document.getElementById("loginBtn");
+    if (emailField.value != "" && passwordField.value != "") {
+        loginBtn.disabled = false;
+    } else {
+        loginBtn.disabled = true;
+    }
+}
 
 function requestLogin(event) {
     event.preventDefault();
