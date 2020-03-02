@@ -321,7 +321,14 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 
 	@Override
 	public List<Reimbursement> getAllReimbursementsByTypeAndName(String type, String firstName, String lastName) {
-		String sql = "select * from reimbursement inner join employee as requester on reimbursement.requester_id = requester.employee_id full join employee as processor on reimbursement.processor_id = processor.employee_id where reimbursement_status = 'pending' and requester.first_name = ? and requester.last_name = ? order by reimbursement_id desc";
+		
+		String sql;
+		if (type.equals("pending")) {
+			sql = "select * from reimbursement inner join employee as requester on reimbursement.requester_id = requester.employee_id full join employee as processor on reimbursement.processor_id = processor.employee_id where reimbursement_status = 'pending' and requester.first_name = ? and requester.last_name = ? order by reimbursement_id desc";
+		} else {
+			sql = "select * from reimbursement inner join employee as requester on reimbursement.requester_id = requester.employee_id full join employee as processor on reimbursement.processor_id = processor.employee_id where reimbursement_status != 'pending' and requester.first_name = ? and requester.last_name = ? order by reimbursement_id desc";
+		}
+				
 		ResultSet rs = null;
 		List<Reimbursement> reimbursements = new ArrayList<>();
 		
@@ -381,6 +388,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			}
 		}
 		
+		System.out.println(reimbursements.size());
 		return reimbursements;			
 	}
 

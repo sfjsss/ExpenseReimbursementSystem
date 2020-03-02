@@ -1,5 +1,8 @@
 console.log("managerResolved.js is working");
 
+document.getElementById("resetFilterBtn").addEventListener("click", resetFilter);
+document.getElementById("filterBtn").addEventListener("click", filterResultsByName);
+
 const searchParams = (new URL(window.location).searchParams);
 let employeeId;
 let employeeFirstName;
@@ -62,4 +65,32 @@ function renderReimbursement(reimbursement) {
                             <td>${reimbursement.requester.first_name} ${reimbursement.requester.last_name}</td>
                             <td>${reimbursement.reimbursement_status} by ${reimbursement.processor.first_name} ${reimbursement.processor.last_name}</td>`;
     tableBody.appendChild(tableRow);
+}
+
+function resetFilter() {
+    window.location.href = "manager-resolved";
+}
+
+function filterResultsByName(event) {
+    event.preventDefault();
+    const splittedName = searchField.value.split(" ");
+    const first_name = splittedName[0];
+    const last_name = splittedName[1];
+    const url = `http://localhost:8080/api/reimbursements?employeeId=-1&type=resolved&first_name=${first_name}&last_name=${last_name}`;
+    console.log(url);
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("GET", url);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            const parsedData = JSON.parse(xhr.response);
+            console.log(parsedData);
+            document.getElementById("requestsTable").innerHTML = "";
+            for (let reimbursement of parsedData) {
+                renderReimbursement(reimbursement);
+            }
+        }
+    }
+    xhr.setRequestHeader("authorization", sessionStorage.getItem("token"));
+    xhr.send();
 }
