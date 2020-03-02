@@ -126,14 +126,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public int resetPassword(String email) {
+	public int resetPassword(String email, String password) {
 		String sql = "update employee set pass = ? where email = ?";
 		int affectedRow = 0;
 		
 		try (Connection c = ConnectionUtil.getConnection();
 				PreparedStatement ps = c.prepareStatement(sql)) {
 			
-			String hashedPW = BCrypt.hashpw("password", BCrypt.gensalt());
+			String hashedPW = BCrypt.hashpw(password, BCrypt.gensalt());
 			ps.setString(1, hashedPW);
 			ps.setString(2, email);
 			

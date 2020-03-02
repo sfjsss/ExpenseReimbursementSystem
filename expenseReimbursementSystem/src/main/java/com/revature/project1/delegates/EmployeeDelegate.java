@@ -9,6 +9,7 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.mindrot.jbcrypt.BCrypt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,7 +28,8 @@ public class EmployeeDelegate {
 		employee.setFirst_name(request.getParameter("first_name"));
 		employee.setLast_name(request.getParameter("last_name"));
 		employee.setEmployee_type("associate");
-		String hashedPw = BCrypt.hashpw("password", BCrypt.gensalt());
+		String randomGeneratedPassword = RandomStringUtils.randomAlphabetic(8);
+		String hashedPw = BCrypt.hashpw(randomGeneratedPassword, BCrypt.gensalt());
 		employee.setPass(hashedPw);
 		
 		if (employee.getEmail().equals("") || employee.getFirst_name().equals("") || employee.getLast_name().equals("")) {
@@ -38,7 +40,7 @@ public class EmployeeDelegate {
 		int result = es.createEmployee(employee);
 		if (result != 0) {
 			try {
-				emailService.sendEmail(request.getParameter("email"), "ERS: you have been registered", "email: " + request.getParameter("email") + "\npassword: password \nPlease change your password after your logged in.");
+				emailService.sendEmail(request.getParameter("email"), "ERS: you have been registered", "email: " + request.getParameter("email") + "\npassword: " + randomGeneratedPassword + " \nPlease change your password after your logged in.");
 			} catch (MessagingException e) {
 				e.printStackTrace();
 			}
