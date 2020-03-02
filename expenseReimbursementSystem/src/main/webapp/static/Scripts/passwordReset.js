@@ -1,7 +1,16 @@
 $(document).ready(function() {
     console.log("passwordReset is working");
 
-    document.getElementById("resetSubmitBtn").addEventListener("click", resetPassword);
+    let emailField = document.getElementById("email");
+    let submitBtn = document.getElementById("resetSubmitBtn");
+    submitBtn.addEventListener("click", resetPassword);
+    emailField.addEventListener("change", resetFormValidation);
+
+    function resetFormValidation() {
+        if (emailField.value != "") {
+            submitBtn.disabled = false;
+        }
+    }
 
     function resetPassword(event) {
         event.preventDefault();
