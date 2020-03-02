@@ -4,3 +4,95 @@
 2020-03-02 09:35:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
 2020-03-02 09:35:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
 2020-03-02 09:35:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:25:44 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:25:59 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:25:59 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:25:59 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:25:59 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:01 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:09 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:09 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:09 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:09 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:09 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:12 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:12 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:12 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:12 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:16 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:18 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:20 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:20 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:20 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:20 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:26:27 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:29:22 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:29:31 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:31:09 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:31:11 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:31:12 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:31:14 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:13 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:19 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:22 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:22 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:22 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:22 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:22 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:29 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:31 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:32:34 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:35:08 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:35:17 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:35:25 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:35:28 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:35:29 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:35:31 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:35:33 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:36:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:36:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:36:21 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:36:22 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:36:24 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:36:24 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:36:24 WARN  FrontController:27 method: doGet - doGet handler is triggered
+2020-03-02 13:39:17 WARN  FrontController:28 method: doGet - path received: /
+2020-03-02 13:39:27 WARN  FrontController:28 method: doGet - path received: /login
+2020-03-02 13:39:27 WARN  FrontController:28 method: doGet - path received: /static/Views/login.html
+2020-03-02 13:39:27 WARN  FrontController:28 method: doGet - path received: /static/Styles/home.css
+2020-03-02 13:39:27 WARN  FrontController:28 method: doGet - path received: /static/Scripts/login.js
+2020-03-02 13:39:27 WARN  FrontController:28 method: doGet - path received: /favicon.ico
+2020-03-02 13:39:56 WARN  FrontController:28 method: doGet - path received: /api/reimbursements
+2020-03-02 13:41:01 WARN  FrontController:28 method: doGet - path received: /api/employees
+2020-03-02 13:42:19 WARN  FrontController:28 method: doGet - path received: /
+2020-03-02 13:42:33 WARN  FrontController:28 method: doGet - path received: /view-employees
+2020-03-02 13:42:33 WARN  FrontController:28 method: doGet - path received: /static/Views/managerViewEmpl.html
+2020-03-02 13:42:33 WARN  FrontController:28 method: doGet - path received: /static/Styles/home.css
+2020-03-02 13:42:33 WARN  FrontController:28 method: doGet - path received: /static/Scripts/clientRouteGuard.js
+2020-03-02 13:42:33 WARN  FrontController:28 method: doGet - path received: /static/Scripts/viewEmployees.js
+2020-03-02 13:42:33 WARN  FrontController:28 method: doGet - path received: /api/employees
+2020-03-02 13:42:33 WARN  FrontController:28 method: doGet - path received: /favicon.ico
+2020-03-02 13:42:41 WARN  FrontController:28 method: doGet - path received: /manager-profile
+2020-03-02 13:42:41 WARN  FrontController:28 method: doGet - path received: /static/Views/managerProfileEdit.html
+2020-03-02 13:42:41 WARN  FrontController:28 method: doGet - path received: /static/Scripts/employeeProfile.js
+2020-03-02 13:42:45 WARN  FrontController:28 method: doGet - path received: /manager-pending
+2020-03-02 13:42:45 WARN  FrontController:28 method: doGet - path received: /static/Views/managerPendingReq.html
+2020-03-02 13:42:45 WARN  FrontController:28 method: doGet - path received: /static/Scripts/managerPending.js
+2020-03-02 13:42:45 WARN  FrontController:28 method: doGet - path received: /api/reimbursements
+2020-03-02 13:42:47 WARN  FrontController:28 method: doGet - path received: /manager-resolved
+2020-03-02 13:42:47 WARN  FrontController:28 method: doGet - path received: /static/Views/managerResolvedReq.html
+2020-03-02 13:42:47 WARN  FrontController:28 method: doGet - path received: /static/Scripts/managerResolved.js
+2020-03-02 13:42:47 WARN  FrontController:28 method: doGet - path received: /api/reimbursements
+2020-03-02 13:42:48 WARN  FrontController:28 method: doGet - path received: /api/employees
+2020-03-02 13:42:52 WARN  FrontController:28 method: doGet - path received: /api/reimbursements
+2020-03-02 13:42:55 WARN  FrontController:28 method: doGet - path received: /api/employees
