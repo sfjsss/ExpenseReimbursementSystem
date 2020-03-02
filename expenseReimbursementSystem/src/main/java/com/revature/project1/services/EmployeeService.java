@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.mail.MessagingException;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.mindrot.jbcrypt.BCrypt;
 
 import com.revature.project1.daos.EmployeeDao;
@@ -58,10 +59,11 @@ public class EmployeeService {
 	}
 	
 	public boolean resetPassword(String email) {
-		int result = ed.resetPassword(email);
+		String randomGeneratedPassword = RandomStringUtils.randomAlphabetic(8);
+		int result = ed.resetPassword(email, randomGeneratedPassword);
 		if (result != 0) {
 			try {
-				es.sendEmail(email, "ERS: your password has been reset", "Your password has been reset to 'password'. Please login and change it.");
+				es.sendEmail(email, "ERS: your password has been reset", "Your password has been reset to " + randomGeneratedPassword + ". Please login and change it.");
 			} catch (MessagingException e) {
 				e.printStackTrace();
 			}
