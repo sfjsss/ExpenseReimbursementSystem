@@ -15,6 +15,9 @@ public class ViewDelegate {
 		case "/login":
 			request.getRequestDispatcher("/static/Views/login.html").forward(request, response);
 			break;
+		case "/reset-password":
+			request.getRequestDispatcher("/static/Views/passwordReset.html").forward(request, response);
+			break;
 		case "/manager-pending":
 			request.getRequestDispatcher("/static/Views/managerPendingReq.html").forward(request, response);
 			break;

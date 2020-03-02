@@ -2,6 +2,8 @@ package com.revature.project1.services;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 import org.mindrot.jbcrypt.BCrypt;
 
 import com.revature.project1.daos.EmployeeDao;
@@ -11,6 +13,7 @@ import com.revature.project1.models.Employee;
 public class EmployeeService {
 	
 	private EmployeeDao ed = new EmployeeDaoImpl();
+	private EmailService es = new EmailService();
 
 	public int createEmployee(Employee e) {
 		return ed.createEmployee(e);
@@ -52,5 +55,19 @@ public class EmployeeService {
 	
 	public List<Employee> getAllEmployees() {
 		return ed.getAllEmployees();
+	}
+	
+	public boolean resetPassword(String email) {
+		int result = ed.resetPassword(email);
+		if (result != 0) {
+			try {
+				es.sendEmail(email, "ERS: your password has been reset", "Your password has been reset to 'password'. Please login and change it.");
+			} catch (MessagingException e) {
+				e.printStackTrace();
+			}
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
