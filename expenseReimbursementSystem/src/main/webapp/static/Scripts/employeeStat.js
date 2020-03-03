@@ -13,18 +13,18 @@ $(document).ready(function() {
 
     // The data for our dataset
     data: {
-        labels: xAxis,
+        labels: xAxis.reverse(),
         datasets: [{
             label: 'Certification',
             backgroundColor: 'rgba(255, 99, 132, 0)',
             borderColor: 'rgb(255, 99, 132)',
-            data: yAxis1
+            data: yAxis1.reverse()
         },
         {
             label: 'Relocation',
             backgroundColor: 'rgba(255, 99, 132, 0)',
             borderColor: 'rgb(161, 239, 139)',
-            data: yAxis2
+            data: yAxis2.reverse()
         }]
     },
 
@@ -41,7 +41,9 @@ $(document).ready(function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 const parsedData = JSON.parse(xhr.response);
                 for (let reimbursement of parsedData) {
-                    renderData(reimbursement);
+                    if (reimbursement.reimbursement_status == "approved") {
+                        renderData(reimbursement);
+                    }
                 }
             }
         }
