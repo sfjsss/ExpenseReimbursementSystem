@@ -1,7 +1,23 @@
 console.log("viewEmployees.js is working");
 
+let emailField = document.getElementById("email");
+let firstNameField = document.getElementById("first_name");
+let lastNameField = document.getElementById("last_name");
+let registerBtn = document.getElementById("registerEmployeeBtn");
+
 getAllEmployees();
-document.getElementById("registerEmployeeBtn").addEventListener("click", registerEmployee);
+registerBtn.addEventListener("click", registerEmployee);
+emailField.addEventListener("change", validateRegisterForm);
+firstNameField.addEventListener("change", validateRegisterForm);
+lastNameField.addEventListener("change", validateRegisterForm);
+
+function validateRegisterForm() {
+    if (emailField.value != "" && firstNameField.value != "" && lastNameField.value != "") {
+        registerBtn.disabled = false;
+    } else {
+        registerBtn.disabled = true;
+    }
+}
 
 function registerEmployee(event) {
     event.preventDefault();
@@ -41,6 +57,7 @@ function getAllEmployees() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             const parsedData = JSON.parse(xhr.response);
+            document.getElementById("employeesTable").innerHTML = "";
             for (let employee of parsedData) {
                 renderEmployees(employee);
             }

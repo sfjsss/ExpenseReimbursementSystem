@@ -100,7 +100,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public List<Employee> getAllEmployees() {
 
-		String sql = "select * from employee where employee_type = 'associate'";
+		String sql = "select * from employee where employee_type = 'associate' order by employee_id desc";
 		List<Employee> employees = new ArrayList<>();
 		
 		try (Connection c = ConnectionUtil.getConnection();
