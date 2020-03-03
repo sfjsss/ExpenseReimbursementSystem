@@ -2,7 +2,6 @@ $(document).ready(function() {
     bsCustomFileInput.init();
 
     const searchParams = (new URL(window.location).searchParams);
-    console.log(searchParams);
     if (searchParams.get("submission") == "true") {
         $("#confirmReimSubmission").modal("show");
     }
@@ -10,6 +9,15 @@ $(document).ready(function() {
     const decodedToken = sessionStorage.getItem("token").split("&");
     document.getElementById("formUserId").value = decodedToken[0];
     document.getElementById("formUserEmail").value = decodedToken[2];
+
+    let reimType = document.getElementById("type");
+    let reimDate = document.getElementById("date");
+    let reimAmount = document.getElementById("amount");
+    let submitBtn = document.getElementById("submitReimBtn");
+
+    reimType.addEventListener("change", formValidation);
+    reimDate.addEventListener("change", formValidation);
+    reimAmount.addEventListener("change", formValidation);
 
     getAllPendingReimbursements();
 
@@ -41,5 +49,13 @@ $(document).ready(function() {
                                 <td><a href="http://127.0.0.1:8887${reimbursement.receipt_path}" target="_blank">${reimbursement.receipt_name}</a></td>
                                 <td>${reimbursement.reimbursement_description}</td>`;
         tableBody.appendChild(tableRow);
+    }
+
+    function formValidation() {
+        if (reimType.value != "" && reimDate.value != "" && reimAmount.value != "") {
+            submitBtn.disabled = false;
+        } else {
+            submitBtn.disabled = true;
+        }
     }
 })
