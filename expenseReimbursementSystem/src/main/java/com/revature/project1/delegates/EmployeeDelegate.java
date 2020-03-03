@@ -3,6 +3,7 @@ package com.revature.project1.delegates;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -67,11 +68,20 @@ public class EmployeeDelegate {
 	}
 	
 	public void getAllEmployees(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		List<Employee> employees = es.getAllEmployees();
+		List<Employee> employees = new ArrayList<>();
+		String firstName = request.getParameter("first_name");
+		String lastName = request.getParameter("last_name");
+		
+		if (firstName == null && lastName == null) {
+			employees = es.getAllEmployees();
+		} else {
+			employees = es.getAllEmployeesByName(firstName, lastName);
+		}
 		
 		try (PrintWriter pw = response.getWriter()) {
 			pw.write(new ObjectMapper().writeValueAsString(employees));
 		}
+		
 	}
 	
 	public void resetPassword(HttpServletRequest request, HttpServletResponse response) {

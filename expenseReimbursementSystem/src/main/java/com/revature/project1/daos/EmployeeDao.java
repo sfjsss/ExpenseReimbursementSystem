@@ -10,5 +10,6 @@ public interface EmployeeDao {
 	public Employee isEmailExist(String email);
 	public int updateEmployee(Employee e);
 	public List<Employee> getAllEmployees();
+	public List<Employee> getAllEmployeesByName(String firstName, String lastName);
 	public int resetPassword(String email, String password);
 }

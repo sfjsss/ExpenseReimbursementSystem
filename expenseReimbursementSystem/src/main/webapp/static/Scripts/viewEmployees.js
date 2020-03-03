@@ -4,8 +4,14 @@ let emailField = document.getElementById("email");
 let firstNameField = document.getElementById("first_name");
 let lastNameField = document.getElementById("last_name");
 let registerBtn = document.getElementById("registerEmployeeBtn");
+let searchField = document.getElementById("employeeName");
+let filterBtn = document.getElementById("filterBtn");
+let resetBtn = document.getElementById("resetBtn");
 
 getAllEmployees();
+
+filterBtn.addEventListener("click", filterResultsByName);
+resetBtn.addEventListener("click", resetFilter);
 registerBtn.addEventListener("click", registerEmployee);
 emailField.addEventListener("change", validateRegisterForm);
 firstNameField.addEventListener("change", validateRegisterForm);
@@ -75,4 +81,30 @@ function renderEmployees(employee) {
                             <td>${employee.email}</td>
                             <td><a href="manager-pending?employeeId=${employee.employee_id}&first_name=${employee.first_name}&last_name=${employee.last_name}">view pending</a> | <a href="manager-resolved?employeeId=${employee.employee_id}&first_name=${employee.first_name}&last_name=${employee.last_name}">view resolved</a></td>`;
     tableBody.appendChild(tableRow);
+}
+
+function resetFilter() {
+    window.location.href = "view-employees";
+}
+
+function filterResultsByName(event) {
+    event.preventDefault();
+    const splittedName = searchField.value.split(" ");
+    const first_name = splittedName[0];
+    const last_name = splittedName[1];
+    const url = `http://localhost:8080/api/employees?first_name=${first_name}&last_name=${last_name}`;
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("GET", url);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            const parsedData = JSON.parse(xhr.response);
+            document.getElementById("employeesTable").innerHTML = "";
+            for (let employee of parsedData) {
+                renderEmployees(employee);
+            }
+        }
+    }
+    xhr.setRequestHeader("authorization", sessionStorage.getItem("token"));
+    xhr.send();
 }
