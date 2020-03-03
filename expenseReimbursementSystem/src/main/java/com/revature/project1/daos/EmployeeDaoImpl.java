@@ -145,6 +145,45 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		
 		return affectedRow;
 	}
+
+	@Override
+	public List<Employee> getAllEmployeesByName(String firstName, String lastName) {
+		String sql = "select * from employee where first_name = ? and last_name = ? and employee_type = 'associate' order by employee_id desc";
+		ResultSet rs = null;
+		List<Employee> employees = new ArrayList<>();
+		
+		try (Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql)) {
+			
+			ps.setString(1, firstName);
+			ps.setString(2, lastName);
+			
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				Employee employee = new Employee();
+				employee.setEmployee_id(rs.getInt(1));
+				employee.setEmail(rs.getString(2));
+				employee.setEmployee_type(rs.getString(3));
+				employee.setFirst_name(rs.getString(4));
+				employee.setLast_name(rs.getString(5));
+				employees.add(employee);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return employees;
+	}
 	
 	
 

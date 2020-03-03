@@ -58,6 +58,10 @@ public class EmployeeService {
 		return ed.getAllEmployees();
 	}
 	
+	public List<Employee> getAllEmployeesByName(String firstName, String lastName) {
+		return ed.getAllEmployeesByName(firstName, lastName);
+	}
+	
 	public boolean resetPassword(String email) {
 		String randomGeneratedPassword = RandomStringUtils.randomAlphabetic(8);
 		int result = ed.resetPassword(email, randomGeneratedPassword);
