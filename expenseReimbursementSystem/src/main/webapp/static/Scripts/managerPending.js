@@ -11,16 +11,20 @@ let employeeId;
 let employeeFirstName;
 let employeeLastName;
 let searchField = document.getElementById("employeeName");
-if (searchParams.get("employeeId") != null) {
-    employeeId = searchParams.get("employeeId")
-    employeeFirstName = searchParams.get("first_name");
-    employeeLastName = searchParams.get("last_name");
-    searchField.value = employeeFirstName + " " + employeeLastName;
-    getAllPendingReimbursementsById(employeeId);
-} else {
-    getAllPendingReimbursements();
-}
 
+retrieveInformation();
+
+function retrieveInformation() {
+    if (searchParams.get("employeeId") != null) {
+        employeeId = searchParams.get("employeeId")
+        employeeFirstName = searchParams.get("first_name");
+        employeeLastName = searchParams.get("last_name");
+        searchField.value = employeeFirstName + " " + employeeLastName;
+        getAllPendingReimbursementsById(employeeId);
+    } else {
+        getAllPendingReimbursements();
+    }
+}
 
 function getAllPendingReimbursements() {
     const url = "http://localhost:8080/api/reimbursements?employeeId=0&type=pending";
@@ -47,7 +51,6 @@ function getAllPendingReimbursementsById(employeeId) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             const parsedData = JSON.parse(xhr.response);
-            console.log(parsedData);
             for (let reimbursement of parsedData) {
                 renderReimbursement(reimbursement);
             }
@@ -64,7 +67,8 @@ function updateReimbursement(reimbursementId, operation) {
     xhr.open("PUT", url);
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            window.location.href = "http://localhost:8080/manager-pending";
+            document.getElementById("requestsTable").innerHTML = "";
+            retrieveInformation();
         }
     }
     xhr.setRequestHeader("authorization", sessionStorage.getItem("token"));
