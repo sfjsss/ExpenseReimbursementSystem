@@ -48,13 +48,17 @@ drop table reimbursement;
 drop table employee;
 
 --dev
-delete from employee where employee_id != 3;
+delete from employee where employee_id != 3 and employee_id != 18;
+delete from employee where employee_id = 25;
 truncate table reimbursement;
+truncate table employee;
 delete from employee where employee_id != 3 and employee_id != 5;
 select * from reimbursement inner join employee as requester on reimbursement.requester_id = requester.employee_id full join employee as processor on reimbursement.processor_id = processor.employee_id where reimbursement_status = 'pending' and requester.first_name = 'tianyu' and requester.last_name = 'li' order by reimbursement_id desc;
 select * from reimbursement inner join employee as requester on reimbursement.requester_id = requester.employee_id full join employee as processor on reimbursement.processor_id = processor.employee_id where requester.employee_id = 5 and reimbursement_status = 'pending';
 select updateReimbursement(3, 27, 'approved');
 delete from employee where employee_id = 16;
+drop table reimbursement;
+drop table employee;
 
 
 

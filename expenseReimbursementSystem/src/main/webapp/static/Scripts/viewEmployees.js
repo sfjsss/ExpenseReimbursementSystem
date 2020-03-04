@@ -40,6 +40,7 @@ function registerEmployee(event) {
             document.getElementById("email").value = "";
             document.getElementById("first_name").value = "";
             document.getElementById("last_name").value = "";
+            registerBtn.disabled = true;
 
             message.innerText = "A new employee has been registered, an email has been sent to notify the employee";
             $("#confirmEmployeeRegistered").modal("show");

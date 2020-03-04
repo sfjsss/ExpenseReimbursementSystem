@@ -26,15 +26,15 @@ public class Driver {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-						
+		
 	}
 	
-	public static void createAManager() {
+	public static void createAManager(String email, String firstName, String lastName) {
 		Employee m = new Employee();
-		m.setEmail("alan@l.com");
+		m.setEmail(email);
 		m.setEmployee_type("manager");
-		m.setFirst_name("Alan");
-		m.setLast_name("Li");
+		m.setFirst_name(firstName);
+		m.setLast_name(lastName);
 		String hashedPW = BCrypt.hashpw("password", BCrypt.gensalt());
 		m.setPass(hashedPW);
 		es.createEmployee(m);
